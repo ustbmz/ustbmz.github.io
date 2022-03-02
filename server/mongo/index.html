@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>安装mongodb | 西蒙无敌</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="life is fxxing movie">
+    
+    <link rel="preload" href="./assets/css/0.styles.972adae9.css" as="style"><link rel="preload" href="./assets/js/app.f139b321.js" as="script"><link rel="preload" href="./assets/js/2.3429f92b.js" as="script"><link rel="preload" href="./assets/js/19.db26ccc0.js" as="script"><link rel="prefetch" href="./assets/js/10.f1d553d1.js"><link rel="prefetch" href="./assets/js/11.c4747e86.js"><link rel="prefetch" href="./assets/js/12.c1cb2abe.js"><link rel="prefetch" href="./assets/js/13.d32a15ff.js"><link rel="prefetch" href="./assets/js/14.8d23d477.js"><link rel="prefetch" href="./assets/js/15.9432b7e8.js"><link rel="prefetch" href="./assets/js/16.c8941f76.js"><link rel="prefetch" href="./assets/js/17.c67f01e4.js"><link rel="prefetch" href="./assets/js/18.76a5ecb0.js"><link rel="prefetch" href="./assets/js/20.473d1127.js"><link rel="prefetch" href="./assets/js/21.fc4e5dff.js"><link rel="prefetch" href="./assets/js/22.4f6f66c8.js"><link rel="prefetch" href="./assets/js/23.39a089e5.js"><link rel="prefetch" href="./assets/js/24.9f842e92.js"><link rel="prefetch" href="./assets/js/3.632fd093.js"><link rel="prefetch" href="./assets/js/4.0db1b887.js"><link rel="prefetch" href="./assets/js/5.f9c8fe08.js"><link rel="prefetch" href="./assets/js/6.0ab9ae4b.js"><link rel="prefetch" href="./assets/js/7.510cfdcb.js"><link rel="prefetch" href="./assets/js/8.84de6c85.js"><link rel="prefetch" href="./assets/js/9.a3e6b837.js">
+    <link rel="stylesheet" href="./assets/css/0.styles.972adae9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/./" class="home-link router-link-active"><!----> <span class="site-name">西蒙无敌</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="底层语言" class="dropdown-title"><span class="title">底层语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="底层语言" class="mobile-dropdown-title"><span class="title">底层语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          学习汇编
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./css/basic/" class="nav-link">
+  汇编语言
+</a></li></ul></li><li class="dropdown-item"><h4>
+          重温C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./css/basic/" class="nav-link">
+  C++基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="IOS开发" class="dropdown-title"><span class="title">IOS开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="IOS开发" class="mobile-dropdown-title"><span class="title">IOS开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Swift语言
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./swift/init/" class="nav-link">
+  基础知识
+</a></li><li class="dropdown-subitem"><a href="/./swift/flow/" class="nav-link">
+  流程控制
+</a></li><li class="dropdown-subitem"><a href="/./swift/func/" class="nav-link">
+  函数
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Object-c
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./object-c/init/" class="nav-link">
+  基础知识
+</a></li><li class="dropdown-subitem"><a href="/./object-c/flow/" class="nav-link">
+  流程控制
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./javascript/basic/" class="nav-link">
+  js基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ES6语法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./javascript/es6/" class="nav-link">
+  ES6语法
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS进阶" class="dropdown-title"><span class="title">CSS进阶</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS进阶" class="mobile-dropdown-title"><span class="title">CSS进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Css
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./css/basic/" class="nav-link">
+  Css框模型
+</a></li><li class="dropdown-subitem"><a href="/./css/flex/" class="nav-link">
+  Flex弹性布局
+</a></li><li class="dropdown-subitem"><a href="/./css/grid/" class="nav-link">
+  Grid网格布局
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法刷题" class="dropdown-title"><span class="title">算法刷题</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法刷题" class="mobile-dropdown-title"><span class="title">算法刷题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          努力刷题
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./leetcode/day/" class="nav-link">
+  每日一题
+</a></li><li class="dropdown-subitem"><a href="/./leetcode/week/" class="nav-link">
+  每周大题
+</a></li></ul></li><li class="dropdown-item"><h4>
+          大题
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./leetcode/difficult/" class="nav-link">
+  难题详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="服务器相关" class="dropdown-title"><span class="title">服务器相关</span> <span class="arrow down"></span></button> <button type="button" aria-label="服务器相关" class="mobile-dropdown-title"><span class="title">服务器相关</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          服务器相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./server/nginx/" class="nav-link">
+  Nginx
+</a></li><li class="dropdown-subitem"><a href="/./server/redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/./server/mongo/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Mongo
+</a></li><li class="dropdown-subitem"><a href="/./server/jenkins/" class="nav-link">
+  Jenkins
+</a></li></ul></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="底层语言" class="dropdown-title"><span class="title">底层语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="底层语言" class="mobile-dropdown-title"><span class="title">底层语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          学习汇编
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./css/basic/" class="nav-link">
+  汇编语言
+</a></li></ul></li><li class="dropdown-item"><h4>
+          重温C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./css/basic/" class="nav-link">
+  C++基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="IOS开发" class="dropdown-title"><span class="title">IOS开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="IOS开发" class="mobile-dropdown-title"><span class="title">IOS开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Swift语言
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./swift/init/" class="nav-link">
+  基础知识
+</a></li><li class="dropdown-subitem"><a href="/./swift/flow/" class="nav-link">
+  流程控制
+</a></li><li class="dropdown-subitem"><a href="/./swift/func/" class="nav-link">
+  函数
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Object-c
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./object-c/init/" class="nav-link">
+  基础知识
+</a></li><li class="dropdown-subitem"><a href="/./object-c/flow/" class="nav-link">
+  流程控制
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./javascript/basic/" class="nav-link">
+  js基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ES6语法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./javascript/es6/" class="nav-link">
+  ES6语法
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS进阶" class="dropdown-title"><span class="title">CSS进阶</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS进阶" class="mobile-dropdown-title"><span class="title">CSS进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Css
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./css/basic/" class="nav-link">
+  Css框模型
+</a></li><li class="dropdown-subitem"><a href="/./css/flex/" class="nav-link">
+  Flex弹性布局
+</a></li><li class="dropdown-subitem"><a href="/./css/grid/" class="nav-link">
+  Grid网格布局
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法刷题" class="dropdown-title"><span class="title">算法刷题</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法刷题" class="mobile-dropdown-title"><span class="title">算法刷题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          努力刷题
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./leetcode/day/" class="nav-link">
+  每日一题
+</a></li><li class="dropdown-subitem"><a href="/./leetcode/week/" class="nav-link">
+  每周大题
+</a></li></ul></li><li class="dropdown-item"><h4>
+          大题
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./leetcode/difficult/" class="nav-link">
+  难题详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="服务器相关" class="dropdown-title"><span class="title">服务器相关</span> <span class="arrow down"></span></button> <button type="button" aria-label="服务器相关" class="mobile-dropdown-title"><span class="title">服务器相关</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          服务器相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/./server/nginx/" class="nav-link">
+  Nginx
+</a></li><li class="dropdown-subitem"><a href="/./server/redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/./server/mongo/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Mongo
+</a></li><li class="dropdown-subitem"><a href="/./server/jenkins/" class="nav-link">
+  Jenkins
+</a></li></ul></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Server</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/./server/nginx/" class="sidebar-link">Nginx 基本知识及用法</a></li><li><a href="/./server/redis/" class="sidebar-link">Centos7安装Redis</a></li><li><a href="/./server/mongo/" aria-current="page" class="active sidebar-link">安装mongodb</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/./server/mongo/#配置yum源" class="sidebar-link">配置yum源</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#安装" class="sidebar-link">安装</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#启动mongodb-并设置开机启动" class="sidebar-link">启动mongodb 并设置开机启动</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#检查mongodb的服务状态和端口监听信息" class="sidebar-link">检查MongoDB的服务状态和端口监听信息</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#创建初始超级管理员用户" class="sidebar-link">创建初始超级管理员用户</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#创建操作用户" class="sidebar-link">创建操作用户</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#centos-8上为mongodb创建selinux策略" class="sidebar-link">CentOS 8上为MongoDB创建SELinux策略：</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#创建admin账号" class="sidebar-link">创建admin账号</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#mongodb服务器中启用访问控制" class="sidebar-link">MongoDB服务器中启用访问控制：</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#配置mongodb服务以进行网络访问" class="sidebar-link">配置MongoDB服务以进行网络访问：</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#重新启动mongodb服务以应用更改。" class="sidebar-link">重新启动MongoDB服务以应用更改。</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#防火墙设置" class="sidebar-link">防火墙设置</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#mongodb数据和日志目录" class="sidebar-link">MongoDB数据和日志目录：</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#基本用法" class="sidebar-link">基本用法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/./server/mongo/#查看" class="sidebar-link">查看</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#创建用户" class="sidebar-link">创建用户</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#权限详解" class="sidebar-link">权限详解</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#修改密码" class="sidebar-link">修改密码</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#修改权限" class="sidebar-link">修改权限</a></li><li class="sidebar-sub-header"><a href="/./server/mongo/#删除用户" class="sidebar-link">删除用户</a></li></ul></li></ul></li><li><a href="/./server/jenkins/" class="sidebar-link">Jenkins 安装及自动化部署</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="安装mongodb"><a href="#安装mongodb" class="header-anchor">#</a> 安装mongodb</h1> <h2 id="配置yum源"><a href="#配置yum源" class="header-anchor">#</a> 配置yum源</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> /etc/yum.repos.d
+$ <span class="token function">vi</span> /etc/yum.repos.d/mongodb.repo
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>mongodb-org<span class="token punctuation">]</span>
+<span class="token assign-left variable">name</span><span class="token operator">=</span>MongoDB Repository
+<span class="token assign-left variable">baseurl</span><span class="token operator">=</span>https://mirrors.tuna.tsinghua.edu.cn/mongodb/yum/el<span class="token variable">$releasever</span>/
+<span class="token assign-left variable">gpgcheck</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token assign-left variable">enabled</span><span class="token operator">=</span><span class="token number">1</span>
+</code></pre></div><h2 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 建立yum源缓存</span>
+$ yum makecache
+<span class="token comment"># 查看所有mongodb版本</span>
+$ yum list <span class="token operator">|</span> <span class="token function">grep</span> mongodb
+<span class="token comment"># 安装org版本</span>
+$ yum <span class="token function">install</span> mongodb-org
+</code></pre></div><h2 id="启动mongodb-并设置开机启动"><a href="#启动mongodb-并设置开机启动" class="header-anchor">#</a> 启动mongodb 并设置开机启动</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@localhost yum.repos.d<span class="token punctuation">]</span><span class="token comment"># systemctl status mongod</span>
+● mongod.service - MongoDB Database Server
+   Loaded: loaded <span class="token punctuation">(</span>/usr/lib/systemd/system/mongod.service<span class="token punctuation">;</span> enabled<span class="token punctuation">;</span> vendor preset: disabled<span class="token punctuation">)</span>
+   Active: inactive <span class="token punctuation">(</span>dead<span class="token punctuation">)</span>
+     Docs: https://docs.mongodb.org/manual
+<span class="token punctuation">[</span>root@localhost yum.repos.d<span class="token punctuation">]</span><span class="token comment"># systemctl start mongod</span>
+<span class="token punctuation">[</span>root@localhost yum.repos.d<span class="token punctuation">]</span><span class="token comment"># systemctl enable mongod</span>
+</code></pre></div><h2 id="检查mongodb的服务状态和端口监听信息"><a href="#检查mongodb的服务状态和端口监听信息" class="header-anchor">#</a> 检查<strong>MongoDB</strong>的服务状态和端口监听信息</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># systemctl status mongod.service</span>
+● mongod.service - MongoDB Database Server
+   Loaded: loaded <span class="token punctuation">(</span>/usr/lib/systemd/system/mongod.service<span class="token punctuation">;</span> enabled<span class="token punctuation">;</span> vendor preset: disabled<span class="token punctuation">)</span>
+   Active: active <span class="token punctuation">(</span>running<span class="token punctuation">)</span> since Fri <span class="token number">2020</span>-12-18 <span class="token number">23</span>:17:49 CST<span class="token punctuation">;</span> 16s ago
+     Docs: https://docs.mongodb.org/manual
+  Process: <span class="token number">930807</span> <span class="token assign-left variable">ExecStart</span><span class="token operator">=</span>/usr/bin/mongod <span class="token variable">$OPTIONS</span> <span class="token punctuation">(</span>code<span class="token operator">=</span>exited, <span class="token assign-left variable">status</span><span class="token operator">=</span><span class="token number">0</span>/SUCCESS<span class="token punctuation">)</span>
+  Process: <span class="token number">930804</span> <span class="token assign-left variable">ExecStartPre</span><span class="token operator">=</span>/usr/bin/chmod 0755 /var/run/mongodb <span class="token punctuation">(</span>code<span class="token operator">=</span>exited, <span class="token assign-left variable">status</span><span class="token operator">=</span><span class="token number">0</span>/SUCCESS<span class="token punctuation">)</span>
+  Process: <span class="token number">930802</span> <span class="token assign-left variable">ExecStartPre</span><span class="token operator">=</span>/usr/bin/chown mongod:mongod /var/run/mongodb <span class="token punctuation">(</span>code<span class="token operator">=</span>exited, <span class="token assign-left variable">status</span><span class="token operator">=</span><span class="token number">0</span>/SUCCESS<span class="token punctuation">)</span>
+  Process: <span class="token number">930800</span> <span class="token assign-left variable">ExecStartPre</span><span class="token operator">=</span>/usr/bin/mkdir -p /var/run/mongodb <span class="token punctuation">(</span>code<span class="token operator">=</span>exited, <span class="token assign-left variable">status</span><span class="token operator">=</span><span class="token number">0</span>/SUCCESS<span class="token punctuation">)</span>
+ Main PID: <span class="token number">930809</span> <span class="token punctuation">(</span>mongod<span class="token punctuation">)</span>
+   Memory: <span class="token number">57</span>.7M
+   CGroup: /system.slice/mongod.service
+           └─930809 /usr/bin/mongod -f /etc/mongod.conf
+
+Dec <span class="token number">18</span> <span class="token number">23</span>:17:48 mongodb.lianglab.cn systemd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: Starting MongoDB Database Server<span class="token punctuation">..</span>.
+Dec <span class="token number">18</span> <span class="token number">23</span>:17:48 mongodb.lianglab.cn mongod<span class="token punctuation">[</span><span class="token number">930807</span><span class="token punctuation">]</span>: about to fork child process, waiting <span class="token keyword">until</span> server is ready <span class="token keyword">for</span> connections.
+Dec <span class="token number">18</span> <span class="token number">23</span>:17:48 mongodb.lianglab.cn mongod<span class="token punctuation">[</span><span class="token number">930807</span><span class="token punctuation">]</span>: forked process: <span class="token number">930809</span>
+Dec <span class="token number">18</span> <span class="token number">23</span>:17:49 mongodb.lianglab.cn mongod<span class="token punctuation">[</span><span class="token number">930807</span><span class="token punctuation">]</span>: child process started successfully, parent exiting
+Dec <span class="token number">18</span> <span class="token number">23</span>:17:49 mongodb.lianglab.cn systemd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: Started MongoDB Database Server
+
+
+<span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># netstat -anplt| grep mongod</span>
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">127.0</span>.0.1:27017         <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">930809</span>/mongod       
+<span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># ss -anplt | grep mongod</span>
+LISTEN    <span class="token number">0</span>         <span class="token number">128</span>              <span class="token number">127.0</span>.0.1:27017            <span class="token number">0.0</span>.0.0:*        users:<span class="token variable"><span class="token punctuation">((</span>&quot;mongod&quot;<span class="token punctuation">,</span>pid<span class="token operator">=</span><span class="token number">930809</span><span class="token punctuation">,</span>fd<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">))</span></span>                                           
+</code></pre></div><h2 id="创建初始超级管理员用户"><a href="#创建初始超级管理员用户" class="header-anchor">#</a> 创建初始超级管理员用户</h2> <div class="language-sql extra-class"><pre class="language-sql"><code>$ mongo
+<span class="token operator">&gt;</span> <span class="token keyword">use</span> admin
+<span class="token operator">&gt;</span> db<span class="token punctuation">.</span>createUser<span class="token punctuation">(</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>   {
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">user</span>: <span class="token string">&quot;test&quot;</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     pwd: <span class="token string">&quot;admin123&quot;</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     roles: <span class="token punctuation">[</span> { role: <span class="token string">&quot;dbOwner&quot;</span><span class="token punctuation">,</span>db: <span class="token string">&quot;testdb&quot;</span> } <span class="token punctuation">]</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>   }
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">)</span>
+</code></pre></div><h2 id="创建操作用户"><a href="#创建操作用户" class="header-anchor">#</a> 创建操作用户</h2> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token operator">&gt;</span> <span class="token keyword">use</span> testdb
+<span class="token operator">&gt;</span> db<span class="token punctuation">.</span>createUser<span class="token punctuation">(</span>{name:<span class="token string">&quot;test&quot;</span><span class="token punctuation">,</span>pwd:<span class="token string">&quot;admin123&quot;</span><span class="token punctuation">,</span>roles:<span class="token punctuation">[</span>{role:<span class="token string">&quot;dbOwner&quot;</span><span class="token punctuation">,</span>db:<span class="token string">&quot;testdb&quot;</span>}<span class="token punctuation">]</span>}<span class="token punctuation">)</span>
+</code></pre></div><h2 id="centos-8上为mongodb创建selinux策略"><a href="#centos-8上为mongodb创建selinux策略" class="header-anchor">#</a> CentOS 8上为MongoDB创建SELinux策略：</h2> <p>根据<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/" target="_blank" rel="noopener noreferrer">MongoDB文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，如果您已将<strong>SELinux</strong>配置为<strong>强制</strong>模式，则必须为MongoDB创建SELinux策略。</p> <p>检查当前的<strong>SELinux</strong>模式。</p> <div class="language-shel extra-class"><pre class="language-text"><code>[root@mongodb ~]# getenforce
+Enforcing
+</code></pre></div><p>我们需要<strong>checkpolicy</strong>命令来验证自定义<strong>SELinux</strong>策略，因此我们正在使用<strong>dnf</strong>命令安装<strong>checkpolicy</strong>软件包。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment">#dnf install -y checkpolicy</span>
+CentOS-8 - AppStream                            <span class="token number">4.0</span> kB/s <span class="token operator">|</span> <span class="token number">4.3</span> kB     00:01
+CentOS-8 - Base                                 <span class="token number">3.0</span> kB/s <span class="token operator">|</span> <span class="token number">3.8</span> kB     00:01
+CentOS-8 - Extras                               <span class="token number">2.7</span> kB/s <span class="token operator">|</span> <span class="token number">1.5</span> kB     00:00
+MongoDB Repository                              <span class="token number">1.6</span> kB/s <span class="token operator">|</span> <span class="token number">2.5</span> kB     00:01
+Dependencies resolved.
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+ Package              Architecture    Version             Repository       Size
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+Installing:
+ checkpolicy          x86_64          <span class="token number">2.9</span>-1.el8           BaseOS          <span class="token number">348</span> k
+
+Transaction Summary
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+Install  <span class="token number">1</span> Package
+
+Total download size: <span class="token number">348</span> k
+Installed size: <span class="token number">1.7</span> M
+Downloading Packages:
+checkpolicy-2.9-1.el8.x86_64.rpm                <span class="token number">7.5</span> kB/s <span class="token operator">|</span> <span class="token number">348</span> kB     00:46
+--------------------------------------------------------------------------------
+Total                                           <span class="token number">7.5</span> kB/s <span class="token operator">|</span> <span class="token number">348</span> kB     00:46
+Running transaction check
+Transaction check succeeded.
+Running transaction <span class="token builtin class-name">test</span>
+Transaction <span class="token builtin class-name">test</span> succeeded.
+Running transaction
+  Preparing        <span class="token builtin class-name">:</span>                                                        <span class="token number">1</span>/1
+  Installing       <span class="token builtin class-name">:</span> checkpolicy-2.9-1.el8.x86_64                           <span class="token number">1</span>/1
+  Running scriptlet: checkpolicy-2.9-1.el8.x86_64                           <span class="token number">1</span>/1
+  Verifying        <span class="token builtin class-name">:</span> checkpolicy-2.9-1.el8.x86_64                           <span class="token number">1</span>/1
+
+Installed:
+  checkpolicy-2.9-1.el8.x86_64
+
+Complete<span class="token operator">!</span>
+</code></pre></div><p>创建一个定制的<strong>SELinux</strong>策略文件。</p> <div class="language- extra-class"><pre class="language-text"><code>[root@mongodb ~]# vi mongodb_cgroup_memory.te
+</code></pre></div><p>并在其中添加以下指令。</p> <div class="language- extra-class"><pre class="language-text"><code>module mongodb_cgroup_memory 1.0;
+
+require {
+    type cgroup_t;
+    type mongod_t;
+    class dir search;
+    class file { getattr open read };
+}
+
+#============= mongod_t ==============
+allow mongod_t cgroup_t:dir search;
+allow mongod_t cgroup_t:file { getattr open read };
+</code></pre></div><p>编译并应用此SELinux策略。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># checkmodule -M -m -o mongodb_cgroup_memory.mod mongodb_cgroup_memory.te</span>
+<span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># semodule_package -o mongodb_cgroup_memory.pp -m mongodb_cgroup_memory.mod</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># semodule -i mongodb_cgroup_memory.pp</span>
+</code></pre></div><h2 id="创建admin账号"><a href="#创建admin账号" class="header-anchor">#</a> 创建admin账号</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># mongo</span>
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/?compressors<span class="token operator">=</span>disabled<span class="token operator">&amp;</span><span class="token assign-left variable">gssapiServiceName</span><span class="token operator">=</span>mongodb
+Implicit session: session <span class="token punctuation">{</span> <span class="token string">&quot;id&quot;</span> <span class="token builtin class-name">:</span> UUID<span class="token punctuation">(</span><span class="token string">&quot;2df728ce-2a97-4635-b9c5-81e0f00923c6&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+MongoDB server version: <span class="token number">4.4</span>.6
+---
+The server generated these startup warnings when booting: 
+        <span class="token number">2021</span>-06-29T20:42:30.610+08:00: Access control is not enabled <span class="token keyword">for</span> the database. Read and <span class="token function">write</span> access to data and configuration is unrestricted
+        <span class="token number">2021</span>-06-29T20:42:30.611+08:00: /sys/kernel/mm/transparent_hugepage/enabled is <span class="token string">'always'</span><span class="token builtin class-name">.</span> We suggest setting it to <span class="token string">'never'</span>
+---
+---
+        Enable MongoDB's <span class="token function">free</span> cloud-based monitoring service, <span class="token function">which</span> will <span class="token keyword">then</span> receive and display
+        metrics about your deployment <span class="token punctuation">(</span>disk utilization, CPU, operation statistics, etc<span class="token punctuation">)</span>.
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to <span class="token function">make</span> product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To <span class="token builtin class-name">enable</span> <span class="token function">free</span> monitoring, run the following command: db.enableFreeMonitoring<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring<span class="token punctuation">(</span><span class="token punctuation">)</span>
+---
+<span class="token operator">&gt;</span> use admin<span class="token punctuation">;</span>
+switched to db admin
+<span class="token operator">&gt;</span> db.createUser<span class="token punctuation">(</span>
+<span class="token punctuation">..</span>.   <span class="token punctuation">{</span>
+<span class="token punctuation">..</span>.     user: <span class="token string">&quot;admin&quot;</span>,
+<span class="token punctuation">..</span>.     pwd: <span class="token string">&quot;liang123&quot;</span>,
+<span class="token punctuation">..</span>.     roles: <span class="token punctuation">[</span> <span class="token punctuation">{</span> role: <span class="token string">&quot;userAdminAnyDatabase&quot;</span>,db: <span class="token string">&quot;admin&quot;</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.   <span class="token punctuation">}</span>
+<span class="token punctuation">..</span>. <span class="token punctuation">)</span>
+Successfully added user: <span class="token punctuation">{</span>
+	<span class="token string">&quot;user&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin&quot;</span>,
+	<span class="token string">&quot;roles&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token string">&quot;role&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;userAdminAnyDatabase&quot;</span>,
+			<span class="token string">&quot;db&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin&quot;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&gt;</span> show <span class="token function">users</span>
+<span class="token punctuation">{</span>
+	<span class="token string">&quot;_id&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin.admin&quot;</span>,
+	<span class="token string">&quot;userId&quot;</span> <span class="token builtin class-name">:</span> UUID<span class="token punctuation">(</span><span class="token string">&quot;91c06ceb-0dc4-4687-a467-679a9a8c75fa&quot;</span><span class="token punctuation">)</span>,
+	<span class="token string">&quot;user&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin&quot;</span>,
+	<span class="token string">&quot;db&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin&quot;</span>,
+	<span class="token string">&quot;roles&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token string">&quot;role&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;userAdminAnyDatabase&quot;</span>,
+			<span class="token string">&quot;db&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin&quot;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>,
+	<span class="token string">&quot;mechanisms&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+		<span class="token string">&quot;SCRAM-SHA-1&quot;</span>,
+		<span class="token string">&quot;SCRAM-SHA-256&quot;</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&gt;</span> <span class="token builtin class-name">exit</span>
+bye
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># </span>
+</code></pre></div><h2 id="mongodb服务器中启用访问控制"><a href="#mongodb服务器中启用访问控制" class="header-anchor">#</a> MongoDB服务器中启用访问控制：</h2> <p>最初，访问控制在MongoDB服务器中被禁用。因此，任何具有CentOS 8服务器操作系统级访问权限的用户都可以连接到MongoDB实例并在数据库上执行管理操作。这就是为什么我们能够在上一步中创建<strong>管理员</strong>用户而无需任何身份验证的原因。</p> <p>要为MongoDB服务器启用<strong>访问控制</strong>，我们需要为<strong>mongod.service</strong>编辑<strong>systemd</strong>单元文件。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># vi /usr/lib/systemd/system/mongod.service</span>
+</code></pre></div><p>在此文件中找到以下行。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token assign-left variable">Environment</span><span class="token operator">=</span><span class="token string">&quot;OPTIONS=-f /etc/mongod.conf&quot;</span>
+</code></pre></div><p>并将其替换为以下行。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token assign-left variable">Environment</span><span class="token operator">=</span><span class="token string">&quot;OPTIONS=--auth -f /etc/mongod.conf&quot;</span>
+</code></pre></div><p>我们已经使用文本编辑器显式地编辑了<strong>systemd</strong>单位文件。因此，我们需要执行以下命令来通知<strong>systemd</strong>有关此更改。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># systemctl daemon-reload</span>
+</code></pre></div><p>重新启动<strong>MongoDB</strong>服务以应用更改。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@mongodb ~<span class="token punctuation">]</span><span class="token comment"># systemctl restart mongod.service</span>
+</code></pre></div><p>要检查访问控制，请连接<strong>MongoDB</strong> shell并执行一些管理命令。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># mongo</span>
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/?compressors<span class="token operator">=</span>disabled<span class="token operator">&amp;</span><span class="token assign-left variable">gssapiServiceName</span><span class="token operator">=</span>mongodb
+Implicit session: session <span class="token punctuation">{</span> <span class="token string">&quot;id&quot;</span> <span class="token builtin class-name">:</span> UUID<span class="token punctuation">(</span><span class="token string">&quot;d07e43a9-d2f5-4884-b9df-962f76fa7b77&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+MongoDB server version: <span class="token number">4.4</span>.6
+<span class="token operator">&gt;</span> use admin<span class="token punctuation">;</span>
+switched to db admin
+<span class="token operator">&gt;</span> show <span class="token function">users</span><span class="token punctuation">;</span>
+uncaught exception: Error: <span class="token builtin class-name">command</span> usersInfo requires authentication <span class="token builtin class-name">:</span>
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DB.prototype.getUsers@src/mongo/shell/db.js:1659:15
+shellHelper.show@src/mongo/shell/utils.js:914:9
+shellHelper@src/mongo/shell/utils.js:819:15
+@<span class="token punctuation">(</span>shellhelp2<span class="token punctuation">)</span>:1:1
+<span class="token operator">&gt;</span> 
+</code></pre></div><p>这次“ <strong>show user”<strong>命令引发身份验证错误，它确认在我们的MongoDB服务器中已启用</strong>访问控制</strong>。</p> <p>现在，以<strong>管理员</strong>用户身份连接。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&gt;</span> db.auth<span class="token punctuation">(</span><span class="token string">&quot;admin&quot;</span>,passwordPrompt<span class="token punctuation">(</span><span class="token punctuation">))</span>
+Enter password: 
+<span class="token number">1</span>
+<span class="token operator">&gt;</span> show <span class="token function">users</span>
+<span class="token punctuation">{</span>
+	<span class="token string">&quot;_id&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin.admin&quot;</span>,
+	<span class="token string">&quot;userId&quot;</span> <span class="token builtin class-name">:</span> UUID<span class="token punctuation">(</span><span class="token string">&quot;91c06ceb-0dc4-4687-a467-679a9a8c75fa&quot;</span><span class="token punctuation">)</span>,
+	<span class="token string">&quot;user&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin&quot;</span>,
+	<span class="token string">&quot;db&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin&quot;</span>,
+	<span class="token string">&quot;roles&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token string">&quot;role&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;userAdminAnyDatabase&quot;</span>,
+			<span class="token string">&quot;db&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;admin&quot;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>,
+	<span class="token string">&quot;mechanisms&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+		<span class="token string">&quot;SCRAM-SHA-1&quot;</span>,
+		<span class="token string">&quot;SCRAM-SHA-256&quot;</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&gt;</span> 
+</code></pre></div><p>已成功使用特权用户执行命令**“显示用户”**。</p> <p>MongoDB数据库的<strong>访问控制</strong>已启用。</p> <h2 id="配置mongodb服务以进行网络访问"><a href="#配置mongodb服务以进行网络访问" class="header-anchor">#</a> 配置MongoDB服务以进行网络访问：</h2> <p>此步骤是可选的。如果您打算通过网络访问MongoDB数据库，则必须执行以下配置。</p> <p>默认情况下，MongoDB服务在<strong>本地主机</strong>接口上运行。因此，要使其能够从网络访问，我们需要在所有接口上运行MongoDB服务。</p> <p>使用<strong>vim</strong>编辑器编辑MongoDB配置文件</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">vi</span> /etc/mongod.conf
+
+<span class="token comment"># network interfaces</span>
+net:
+  port: <span class="token number">27017</span>
+<span class="token comment">#  bindIp: 127.0.0.1  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.</span>
+  bindIp: <span class="token number">0.0</span>.0.0  <span class="token comment"># Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.</span>
+</code></pre></div><h2 id="重新启动mongodb服务以应用更改。"><a href="#重新启动mongodb服务以应用更改。" class="header-anchor">#</a> 重新启动MongoDB服务以应用更改。</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># systemctl restart mongod.service</span>
+</code></pre></div><h2 id="防火墙设置"><a href="#防火墙设置" class="header-anchor">#</a> 防火墙设置</h2> <p>设置如果我们启动了防火墙策略，还需要允许Linux防火墙中的MongoDB服务传入流量。</p> <div class="language- extra-class"><pre class="language-text"><code>[root@mongodb ~]#firewall-cmd --permanent --add-service=mongodb
+success
+[root@mongodb ~]# firewall-cmd --reload
+success
+</code></pre></div><p>您现在可以从网络访问MongoDB数据库服务。</p> <h2 id="mongodb数据和日志目录"><a href="#mongodb数据和日志目录" class="header-anchor">#</a> MongoDB数据和日志目录：</h2> <p>以下是两个目录，对MongoDB数据库管理员来说非常重要。</p> <ul><li>**/var/lib/mongo-**数据目录（默认）</li> <li>**/var/log/mongodb-**日志目录（默认）</li></ul> <p>我们可以通过在**/etc/mongodb.conf**文件中设置以下参数来自定义以上目录。</p> <ul><li>**storage.dbPath-**指定新的数据目录路径</li> <li>**systemLog.path-**指定新的日志文件路径</li></ul> <h2 id="基本用法"><a href="#基本用法" class="header-anchor">#</a> 基本用法</h2> <h3 id="查看"><a href="#查看" class="header-anchor">#</a> 查看</h3> <p>show dbs 查看数据库</p> <p>use dbname 进入数据库</p> <p>show users 查看当前数据库用户权限</p> <h3 id="创建用户"><a href="#创建用户" class="header-anchor">#</a> <strong>创建用户</strong></h3> <p>db.createUser({user:&quot;usertest&quot;,pwd:&quot;passtest&quot;,roles:[ {role:&quot;clusterAdmin&quot;, db:&quot;admin&quot; }, {role:&quot;readAnyDatabase&quot;,db:&quot;admin&quot; }, {role:&quot;readWrite&quot;,db:&quot;testDB&quot; } ]})</p> <h3 id="权限详解"><a href="#权限详解" class="header-anchor">#</a> <strong>权限详解</strong></h3> <h4 id="内建角色"><a href="#内建角色" class="header-anchor">#</a> 内建角色：</h4> <p>数据库用户角色：read、readWrite；</p> <p>数据库管理角色：dbAdmin、dbOwner、userAdmin；</p> <p>集群管理角色： clusterAdmin、clusterManager、clusterMonitor、hostManager；</p> <p>备份恢复角色： backup、restore；</p> <p>所有数据库角色：readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、dbAdminAnyDatabase</p> <p>超级用户角色： root； 这里还有几个角色间接或直接提供了系统超级用户的访问（dbOwner 、userAdmin、userAdminAnyDatabase）</p> <p>内部角色： __system；</p> <p>------------------------------------------------------------------------------------------</p> <h4 id="角色说明"><a href="#角色说明" class="header-anchor">#</a> 角色说明：</h4> <p>Read： 允许用户读取指定数据库</p> <p>readWrite： 允许用户读写指定数据库</p> <p>dbAdmin： 允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile</p> <p>userAdmin： 允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户</p> <p>dbOwner： 允许在当前DB中执行任意操作</p> <p>readAnyDatabase： 赋予用户所有数据库的读权限，只在admin数据库中可用</p> <p>readWriteAnyDatabase： 赋予用户所有数据库的读写权限，只在admin数据库中可用</p> <p>userAdminAnyDatabase：赋予用户所有数据库管理User的权限，只在admin数据库中可用</p> <p>dbAdminAnyDatabase： 赋予管理所有数据库的权限，只在admin数据库中可用</p> <p>root： 超级账号，超级权限，只在admin数据库中可用。</p> <p>------------------------------------------------------------------------------------------</p> <h4 id="集群管理角色"><a href="#集群管理角色" class="header-anchor">#</a> 集群管理角色：</h4> <p>clusterAdmin： 赋予管理集群的最高权限，只在admin数据库中可用</p> <p>clusterManager： 赋予管理和监控集群的权限</p> <p>clusterMonitor： 赋予监控集群的权限，对监控工具具有readonly的权限</p> <p>hostManager： 赋予管理Server</p> <h3 id="修改密码"><a href="#修改密码" class="header-anchor">#</a> <strong>修改密码</strong></h3> <p>方法1：db.changeUserPassword(&quot;usertest&quot;,&quot;changepass&quot;);</p> <p>方法2：db.updateUser(&quot;usertest&quot;,{pwd:&quot;changepass1&quot;})；</p> <h3 id="修改权限"><a href="#修改权限" class="header-anchor">#</a> <strong>修改权限</strong></h3> <p>db.updateUser(&quot;usertest&quot;,{roles:[ {role:&quot;read&quot;,db:&quot;testDB&quot;} ]})</p> <p>注：updateuser它是完全替换之前的值，如果要新增或添加roles而不是代替它</p> <p>则使用方法： db.grantRolesToUser() 和 db.revokeRolesFromUser(）</p> <p>------------------------------------------------------------------------------------------</p> <p>db.grantRolesToUser(&quot;usertest&quot;, [{role:&quot;readWrite&quot;, db:&quot;testDB&quot;},{role:&quot;read&quot;, db:&quot;testDB&quot;}]) # 修改权限</p> <p>db.revokeRolesFromUser(&quot;usertest&quot;,[{role:&quot;read&quot;, db:&quot;testDB&quot;}]) # 删除权限：</p> <h3 id="删除用户"><a href="#删除用户" class="header-anchor">#</a> <strong>删除用户</strong></h3> <p>db.dropUser('usertest')</p> <p>参考：</p> <p>https://jingyan.baidu.com/article/dca1fa6f0428a4f1a440522e.html</p> <p>https://www.cnblogs.com/lianglab/p/14157585.html</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/./server/redis/" class="prev">
+        Centos7安装Redis
+      </a></span> <span class="next"><a href="/./server/jenkins/">
+        Jenkins 安装及自动化部署
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="./assets/js/app.f139b321.js" defer></script><script src="./assets/js/2.3429f92b.js" defer></script><script src="./assets/js/19.db26ccc0.js" defer></script>
+  </body>
+</html>
