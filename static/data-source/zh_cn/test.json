@@ -1,0 +1,36 @@
+[
+  {
+    "text": "热门城市",
+    "children": [
+      {
+        "value": "Shanghai",
+        "text": "上海"
+      },
+      {
+        "value": "Beijing",
+        "text": "北京"
+      }
+    ]
+  },
+  {
+    "text": "城市名",
+    "children": [
+      {
+        "value": "Chengdu",
+        "text": "成都"
+      },
+      {
+        "value": "Shenzhen",
+        "text": "深圳"
+      },
+      {
+        "value": "Guangzhou",
+        "text": "广州"
+      },
+      {
+        "value": "Dalian",
+        "text": "大连"
+      }
+    ]
+  }
+]

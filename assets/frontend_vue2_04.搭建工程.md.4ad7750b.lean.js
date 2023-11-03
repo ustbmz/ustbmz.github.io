@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as n}from"./chunks/framework.76b79cb5.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"frontend/vue2/04.搭建工程.md","filePath":"frontend/vue2/04.搭建工程.md"}'),r={name:"frontend/vue2/04.搭建工程.md"};function a(o,_,s,c,d,f){return t(),n("div")}const m=e(r,[["render",a]]);export{i as __pageData,m as default};
