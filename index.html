@@ -3,380 +3,1023 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lanbi Nation — Waitlist</title>
-  <meta name="description" content="Lanbi Nation fan app. The app goes live May 22, 2026 — join the waitlist.">
+  <title>Lanbi Nation — Join the Waitlist</title>
+  <meta name="description" content="The World Cup 2026 fan app. Live scores, city guides, fan horn, predictions — one app. Launching June 11. Join the waitlist now.">
+  <meta property="og:title" content="Lanbi Nation — The World Cup 2026 Fan App">
+  <meta property="og:description" content="One app. Every fan. 48 nations. Launching June 11, 2026.">
+  <meta property="og:image" content="hero.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #1A2A5E;
+      --navy:   #1A2A5E;
       --orange: #F5A623;
-      --ivory: #FAF8F3;
-      --dark: #0D1526;
-      --muted: rgba(250, 248, 243, 0.72);
+      --ivory:  #FAF8F3;
+      --dark:   #0D1526;
+      --muted:  rgba(250,248,243,0.6);
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Inter, system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--dark);
       color: var(--ivory);
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    .shell {
+    /* ── HERO ── */
+    .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1.25rem 3rem;
       text-align: center;
+      padding: 2rem 1.5rem 4rem;
+      overflow: hidden;
     }
 
-    .shell-bg {
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: url("hero.png") center center / cover no-repeat;
+      background: url('hero.png') center center / cover no-repeat;
       z-index: 0;
     }
 
-    .shell-overlay {
+    .hero-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        165deg,
-        rgba(13, 21, 38, 0.78) 0%,
-        rgba(26, 42, 94, 0.55) 45%,
-        rgba(13, 21, 38, 0.94) 100%
+        to bottom,
+        rgba(13,21,38,0.72) 0%,
+        rgba(26,42,94,0.55) 40%,
+        rgba(13,21,38,0.92) 100%
       );
       z-index: 1;
     }
 
-    .shell-inner {
+    .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 36rem;
+      max-width: 720px;
       width: 100%;
     }
 
-    .logo {
-      width: min(280px, 85vw);
-      height: auto;
-      margin: 0 auto 1.75rem;
-      display: block;
-      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+    .badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      animation: fadeDown 0.6s ease both;
     }
 
-    .headline {
-      font-family: "Barlow Condensed", Inter, sans-serif;
-      font-weight: 800;
-      font-size: clamp(1.35rem, 4.5vw, 1.85rem);
-      line-height: 1.25;
-      letter-spacing: 0.02em;
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 12vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
       text-transform: uppercase;
       color: var(--ivory);
-      margin-bottom: 1.75rem;
+      margin-bottom: 0.5rem;
+      animation: fadeDown 0.7s 0.1s ease both;
     }
 
-    .headline em {
-      font-style: normal;
+    .hero h1 span {
       color: var(--orange);
+      display: block;
     }
 
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-      max-width: 22rem;
-      margin: 0 auto 1.75rem;
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 1.25rem auto 2.5rem;
+      max-width: 520px;
+      animation: fadeDown 0.7s 0.2s ease both;
     }
 
-    .cd-item {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(245, 166, 35, 0.35);
-      border-radius: 12px;
-      padding: 0.65rem 0.35rem;
+    /* ── FORM ── */
+    .form-wrap {
+      animation: fadeDown 0.7s 0.3s ease both;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.625rem;
+      max-width: 480px;
+      margin: 0 auto 1rem;
+    }
+
+    .form-row input {
+      flex: 1;
+      padding: 0.875rem 1.25rem;
+      border-radius: 10px;
+      border: 1.5px solid rgba(245,166,35,0.35);
+      background: rgba(255,255,255,0.07);
+      color: var(--ivory);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
       backdrop-filter: blur(8px);
     }
 
-    .cd-val {
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 800;
-      font-size: clamp(1.5rem, 6vw, 2rem);
-      line-height: 1;
-      color: var(--orange);
-    }
+    .form-row input::placeholder { color: rgba(250,248,243,0.4); }
+    .form-row input:focus { border-color: var(--orange); }
 
-    .cd-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
+    .btn-join {
+      padding: 0.875rem 1.75rem;
+      background: var(--orange);
+      color: var(--dark);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.35rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .launch-note {
-      font-size: 0.8rem;
+    .btn-join:hover { background: #e8960f; transform: translateY(-1px); }
+    .btn-join:active { transform: translateY(0); }
+
+    .form-note {
+      font-size: 0.78rem;
       color: var(--muted);
-      margin-bottom: 1.5rem;
+      margin-top: 0.5rem;
     }
 
-    .cta {
-      display: inline-flex;
+    .success-msg {
+      display: none;
+      background: rgba(245,166,35,0.15);
+      border: 1.5px solid var(--orange);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      color: var(--orange);
+      font-weight: 600;
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      margin-bottom: 1.75rem;
-      padding: 0.9rem 1.5rem;
-      background: var(--orange);
-      color: var(--dark);
-      font-family: "Barlow Condensed", sans-serif;
+      margin-top: 2rem;
+      animation: fadeDown 0.7s 0.4s ease both;
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--dark);
+      margin-left: -8px;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: 0.06em;
+    }
+
+    .avatar:first-child { margin-left: 0; }
+    .av1 { background: #3B5BDB; }
+    .av2 { background: #E03131; }
+    .av3 { background: #2F9E44; }
+    .av4 { background: #F08C00; }
+    .av5 { background: #7048E8; }
+
+    .proof-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .proof-text strong { color: var(--ivory); }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      animation: fadeDown 1s 0.8s ease both;
+    }
+
+    .scroll-hint span {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 4px 20px rgba(245, 166, 35, 0.35);
+      color: var(--muted);
     }
 
-    .cta:hover {
-      background: #e8960f;
-      transform: translateY(-2px);
+    .scroll-dot {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--orange), transparent);
+      animation: scrollPulse 1.8s ease-in-out infinite;
     }
 
-    .cta:active {
-      transform: translateY(0);
+    /* ── FEATURES ── */
+    .features {
+      background: var(--navy);
+      padding: 5rem 1.5rem;
+      text-align: center;
     }
 
-    .form-title {
+    .features-label {
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--orange);
-      margin-bottom: 0.65rem;
-    }
-
-    .waitlist-form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
       margin-bottom: 0.75rem;
     }
 
-    .waitlist-form input[type="email"] {
-      flex: 1 1 12rem;
-      min-width: 0;
-      padding: 0.85rem 1rem;
-      border-radius: 10px;
-      border: 1.5px solid rgba(245, 166, 35, 0.4);
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--ivory);
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .waitlist-form input::placeholder {
-      color: rgba(250, 248, 243, 0.45);
-    }
-
-    .waitlist-form input:focus {
-      border-color: var(--orange);
-    }
-
-    .waitlist-form button {
-      padding: 0.85rem 1.35rem;
-      border: none;
-      border-radius: 10px;
-      background: transparent;
-      color: var(--orange);
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.06em;
+    .features h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
       text-transform: uppercase;
-      cursor: pointer;
-      border: 2px solid var(--orange);
-      transition: background 0.2s, color 0.2s;
+      color: var(--ivory);
+      margin-bottom: 3rem;
+      line-height: 1;
     }
 
-    .waitlist-form button:hover {
-      background: rgba(245, 166, 35, 0.15);
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .form-hint {
-      font-size: 0.75rem;
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(245,166,35,0.2);
+      border-radius: 14px;
+      padding: 1.75rem 1.25rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-3px);
+    }
+
+    .feat-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feat-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ivory);
+      margin-bottom: 0.4rem;
+    }
+
+    .feat-desc {
+      font-size: 0.82rem;
       color: var(--muted);
-      line-height: 1.45;
+      line-height: 1.5;
+    }
+
+    /* ── PRODUCT SECTION ── */
+    .product {
+      background: var(--dark);
+      padding: 5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .product-img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 40px rgba(245,166,35,0.3));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .product-text { max-width: 420px; text-align: left; }
+
+    .product-text .features-label { text-align: left; }
+
+    .product-text h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--ivory);
+      line-height: 1;
       margin-bottom: 1rem;
     }
 
-    .form-msg {
-      display: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--orange);
-      margin-top: 0.5rem;
+    .product-text p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
     }
 
-    .form-msg.visible {
+    .price-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(245,166,35,0.12);
+      border: 1px solid rgba(245,166,35,0.4);
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+    }
+
+    .price-amount {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--orange);
+    }
+
+    .price-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* ── QR SECTION ── */
+    .qr-section {
+      background: var(--navy);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+
+    .qr-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    .qr-section p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .qr-wrap {
+      display: inline-block;
+      background: var(--ivory);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 0 60px rgba(245,166,35,0.25);
+    }
+
+    .qr-wrap img {
+      width: 180px;
+      height: 180px;
       display: block;
     }
 
-    footer {
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
+    .qr-caption {
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
-    footer a {
+    .qr-caption strong { color: var(--orange); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080D18;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(245,166,35,0.15);
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ivory);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-logo span { color: var(--orange); }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    footer a { color: var(--orange); text-decoration: none; }
+
+    /* ── FLAGS ── */
+    .flags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      max-width: 600px;
+      margin: 2rem auto 0;
+      font-size: 1.6rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50%       { opacity: 1; }
+    }
+
+    /* ── PHASE 2 ── */
+    .phase2 {
+      background: var(--dark);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+
+    .phase2 h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-bottom: 3rem;
+      line-height: 1;
+    }
+
+    .phase2-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .phase2-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px dashed rgba(245,166,35,0.25);
+      border-radius: 14px;
+      padding: 1.75rem 1.25rem;
+      position: relative;
+    }
+
+    .coming-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      background: rgba(245,166,35,0.15);
       color: var(--orange);
-      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      border: 1px solid rgba(245,166,35,0.3);
     }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 520px) {
-      .countdown {
-        max-width: 100%;
-      }
-
-      .waitlist-form {
-        flex-direction: column;
-      }
-
-      .waitlist-form button {
-        width: 100%;
-      }
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .form-row { flex-direction: column; }
+      .btn-join { width: 100%; }
+      .product-text { text-align: center; }
+      .product-text .features-label { text-align: center; }
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <div class="shell-bg" aria-hidden="true"></div>
-    <div class="shell-overlay" aria-hidden="true"></div>
 
-    <div class="shell-inner">
-      <img class="logo" src="logo.png" width="560" height="auto" alt="Lanbi Nation">
-
-      <p class="headline">
-        The app goes live <em>May 22, 2026</em> — join the waitlist
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="badge">World Cup 2026 · Launching June 11</div>
+      <h1>The World Cup<span>Is Coming.</span></h1>
+      <p class="hero-sub">
+        Lanbi Nation is the one app every soccer fan needs — live scores, city guides, fan horn, predictions, and more. 48 nations. 4 languages. One app.
       </p>
 
-      <div class="countdown" id="countdown" aria-live="polite">
-        <div class="cd-item">
-          <div class="cd-val" id="cd-days">00</div>
-          <div class="cd-label">Days</div>
+      <div class="form-wrap">
+        <form class="form-row" onsubmit="handleSubmit(event)">
+          <input type="email" id="email-input" placeholder="Enter your email address" required autocomplete="email">
+          <button type="submit" class="btn-join">Join Waitlist</button>
+        </form>
+        <div class="success-msg" id="success-msg">
+          You're on the list! We'll notify you on launch day — June 11.
         </div>
-        <div class="cd-item">
-          <div class="cd-val" id="cd-hours">00</div>
-          <div class="cd-label">Hours</div>
-        </div>
-        <div class="cd-item">
-          <div class="cd-val" id="cd-mins">00</div>
-          <div class="cd-label">Mins</div>
-        </div>
-        <div class="cd-item">
-          <div class="cd-val" id="cd-secs">00</div>
-          <div class="cd-label">Secs</div>
-        </div>
+        <p class="form-note">Free to join. No spam. App launching June 11, 2026.</p>
       </div>
 
-      <p class="launch-note" id="launch-zone"></p>
-
-      <a class="cta" href="https://lanbination.com" target="_blank" rel="noopener noreferrer">
-        Visit lanbination.com
-      </a>
-
-      <p class="form-title">Waitlist</p>
-
-      <form class="waitlist-form" id="waitlist-form" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email" aria-label="Email for waitlist">
-        <input type="hidden" name="_subject" value="Lanbi Nation waitlist signup">
-        <button type="submit">Notify me</button>
-      </form>
-
-      <p class="form-hint">
-        Uses Formspree for delivery — set <code style="color:var(--orange)">FORMSPREE_ENDPOINT</code> in the script below (from your <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">Formspree</a> dashboard).
-        No spam; unsubscribe anytime.
-      </p>
-      <p class="form-msg" id="form-msg" role="status"></p>
-
-      <footer>
-        <a href="mailto:info@lanbination.com">info@lanbination.com</a>
-      </footer>
+      <div class="social-proof">
+        <div class="avatars">
+          <div class="avatar av1">🇫🇷</div>
+          <div class="avatar av2">🇧🇷</div>
+          <div class="avatar av3">🇸🇳</div>
+          <div class="avatar av4">🇺🇸</div>
+          <div class="avatar av5">🇲🇦</div>
+        </div>
+        <p class="proof-text"><strong>Fans worldwide</strong> are already on the waitlist</p>
+      </div>
     </div>
-  </main>
+    <div class="scroll-hint">
+      <span>See features</span>
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <p class="features-label">Phase 1 — Live June 11</p>
+    <h2>Everything in<br>One App.</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feat-icon">📯</div>
+        <div class="feat-title">Lanbi Horn</div>
+        <div class="feat-desc">Tap to blow your digital conch shell horn. Mic activation, LED glow effect, offline mode, and shareable horn sound. The sound of the Caribbean — in your phone.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">⚽</div>
+        <div class="feat-title">World Cup Fan Hub</div>
+        <div class="feat-desc">Live scores, match schedules, standings, and real-time updates for every World Cup match. Available in 4 languages — English, Spanish, French, and Haitian Creole.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">🗺️</div>
+        <div class="feat-title">City Discovery Guide</div>
+        <div class="feat-desc">Restaurants, rides, hotels, transport, weather, and merchandise for all 16 host stadiums across the USA, Canada, and Mexico. Your personal city companion for every match day.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">🏆</div>
+        <div class="feat-title">Predictions & Leaderboard</div>
+        <div class="feat-desc">Pick match winners, score predictions, and trivia challenges. Earn points. Climb the global leaderboard. Compete with friends and fans worldwide.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">📍</div>
+        <div class="feat-title">Match Day Mode</div>
+        <div class="feat-desc">GPS-powered mode that activates automatically when you're within 2 miles of a host stadium. Instant access to local city guides — no searching required.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">🎮</div>
+        <div class="feat-title">Pick'em & Fantasy</div>
+        <div class="feat-desc">Lanbi Pick'em available to all fans globally. DraftKings and FanDuel affiliate integration for fans in the US and Canada.</div>
+      </div>
+    </div>
+
+    <div class="flags">
+      🇫🇷🇧🇷🇺🇸🇸🇳🇪🇬🇲🇦🇲🇽🇦🇷🇩🇪🇯🇵🇵🇹🇬🇭🇳🇬🇨🇲🇨🇴🇪🇸
+    </div>
+  </section>
+
+  <!-- PHASE 2 COMING SOON -->
+  <section class="phase2">
+    <p class="features-label">Coming After Launch</p>
+    <h2>Even More<br>On the Way.</h2>
+    <div class="phase2-grid">
+      <div class="phase2-card">
+        <div class="feat-icon">🔄</div>
+        <div class="feat-title">Group Sync</div>
+        <div class="feat-desc">Sync your Lanbi horn with up to 50 devices in real time. One room code. One massive roar.</div>
+        <span class="coming-badge">Phase 2</span>
+      </div>
+      <div class="phase2-card">
+        <div class="feat-icon">🎉</div>
+        <div class="feat-title">Watch Party RSVP</div>
+        <div class="feat-desc">Create and join watch parties near you. Find fans watching the same match in your city.</div>
+        <span class="coming-badge">Phase 2</span>
+      </div>
+      <div class="phase2-card">
+        <div class="feat-icon">🚗</div>
+        <div class="feat-title">Carpooling</div>
+        <div class="feat-desc">Connect with fans heading to the same stadium. Share rides, split costs, arrive together.</div>
+        <span class="coming-badge">Phase 2</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="product">
+    <img src="lanbi.jpg" alt="Lanbi Nation physical horn" class="product-img">
+    <div class="product-text">
+      <p class="features-label">Physical Product</p>
+      <h2>Own the<br>Real Lanbi</h2>
+      <p>
+        The iconic ivory electronic conch shell — the sound of the Caribbean, now in your hands for the World Cup. Limited edition. Ships before June 11.
+      </p>
+      <div class="price-tag">
+        <span class="price-amount">$21.99</span>
+        <span class="price-label">Pre-order price<br>Ships before June 11</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QR CODE -->
+  <section class="qr-section">
+    <p class="features-label">Scan & Join</p>
+    <h2>Scan Your QR Code</h2>
+    <p>Share with fellow fans — one scan joins the waitlist instantly.</p>
+    <div class="qr-wrap">
+      <img src="qr.png" alt="Scan to join the Lanbi Nation waitlist at LanbiNation.com">
+    </div>
+    <p class="qr-caption">Scan to join at <strong>LanbiNation.com</strong></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Lanbi <span>Nation</span></div>
+    <p>One horn. One nation. Every fan.</p>
+    <p><a href="mailto:info@lanbination.com">info@lanbination.com</a> &nbsp;·&nbsp; <a href="https://lanbination.com">lanbination.com</a></p>
+    <p style="margin-top:1rem;">@LanbiNation on Instagram · TikTok · Facebook</p>
+  </footer>
 
   <script>
-    (function () {
-      /** Full URL from Formspree → Integration → form endpoint, e.g. https://formspree.io/f/abcxyz */
-      var FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-
-      // Launch instant: May 22, 2026, 12:00 noon Eastern Time (America/New_York)
-      // May 22, 2026 12:00 noon Eastern Daylight Time (UTC−4)
-      var target = new Date("2026-05-22T16:00:00.000Z");
-      document.getElementById("launch-zone").textContent =
-        "Countdown to May 22, 2026 · 12:00 noon Eastern Time";
-
-      function pad(n) {
-        return n < 10 ? "0" + n : String(n);
-      }
-
-      function tick() {
-        var now = Date.now();
-        var ms = target.getTime() - now;
-        var el = document.getElementById("countdown");
-
-        if (ms <= 0) {
-          document.getElementById("cd-days").textContent = "00";
-          document.getElementById("cd-hours").textContent = "00";
-          document.getElementById("cd-mins").textContent = "00";
-          document.getElementById("cd-secs").textContent = "00";
-          if (el) el.setAttribute("aria-label", "Launch time reached");
-          return;
-        }
-
-        var s = Math.floor(ms / 1000);
-        var days = Math.floor(s / 86400);
-        s -= days * 86400;
-        var hours = Math.floor(s / 3600);
-        s -= hours * 3600;
-        var mins = Math.floor(s / 60);
-        var secs = s - mins * 60;
-
-        document.getElementById("cd-days").textContent = pad(days);
-        document.getElementById("cd-hours").textContent = pad(hours);
-        document.getElementById("cd-mins").textContent = pad(mins);
-        document.getElementById("cd-secs").textContent = pad(secs);
-      }
-
-      tick();
-      setInterval(tick, 1000);
-
-      var form = document.getElementById("waitlist-form");
-      var msg = document.getElementById("form-msg");
-      form.action = FORMSPREE_ENDPOINT;
-      form.addEventListener("submit", function (e) {
-        if (FORMSPREE_ENDPOINT.indexOf("YOUR_FORM_ID") !== -1) {
-          e.preventDefault();
-          msg.textContent =
-            "Set FORMSPREE_ENDPOINT in the page script to your Formspree form URL before going live.";
-          msg.classList.add("visible");
-        }
-      });
-    })();
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      const form  = e.target;
+      const msg   = document.getElementById('success-msg');
+      // Hide form, show success
+      form.style.display = 'none';
+      msg.style.display  = 'block';
+      // In production, POST email to your backend/Mailchimp here
+      console.log('Waitlist signup:', email);
+    }
   </script>
-</body>
+
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+</script></body>
 </html>
