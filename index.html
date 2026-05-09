@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lanbi Nation — Waitlist</title>
-  <meta name="description" content="Lanbi Nation fan app. The app goes live May 22, 2026 — join the waitlist.">
+  <meta name="description" content="Lanbi Nation — The World Cup is coming. Join the waitlist for the fan app.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1.25rem 3rem;
+      padding: 2.25rem 1.5rem 3.25rem;
       text-align: center;
     }
 
@@ -60,27 +60,27 @@
     .shell-inner {
       position: relative;
       z-index: 2;
-      max-width: 36rem;
+      max-width: min(42rem, 100%);
       width: 100%;
     }
 
     .logo {
-      width: min(200px, 58vw);
+      width: min(180px, 58vw);
       height: auto;
-      margin: 0 auto 1.1rem;
+      margin: 0 auto 1.35rem;
       display: block;
-      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
     }
 
     .headline {
       font-family: "Barlow Condensed", Inter, sans-serif;
       font-weight: 800;
-      font-size: clamp(1.35rem, 4.5vw, 1.85rem);
-      line-height: 1.25;
+      font-size: clamp(1.65rem, 5.2vw, 2.65rem);
+      line-height: 1.14;
       letter-spacing: 0.02em;
-      text-transform: uppercase;
+      text-transform: none;
       color: var(--ivory);
-      margin-bottom: 1.75rem;
+      margin-top: clamp(1rem, 3.5vw, 2.25rem);
+      margin-bottom: clamp(1.65rem, 4.5vw, 2.5rem);
     }
 
     .headline em {
@@ -90,40 +90,45 @@
 
     .countdown {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-      max-width: 22rem;
-      margin: 0 auto 1.75rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(0.5rem, 2.2vw, 1.05rem);
+      max-width: min(36rem, 100%);
+      width: 100%;
+      margin: 0 auto clamp(1.75rem, 4.5vw, 2.45rem);
     }
 
     .cd-item {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(245, 166, 35, 0.35);
-      border-radius: 12px;
-      padding: 0.65rem 0.35rem;
-      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1.5px solid rgba(245, 166, 35, 0.42);
+      border-radius: 14px;
+      padding: clamp(0.72rem, 2.6vw, 1.15rem) clamp(0.35rem, 1.2vw, 0.65rem);
+      backdrop-filter: blur(10px);
+      min-width: 0;
     }
 
     .cd-val {
       font-family: "Barlow Condensed", sans-serif;
       font-weight: 800;
-      font-size: clamp(1.5rem, 6vw, 2rem);
-      line-height: 1;
+      font-size: clamp(1.55rem, 7.5vw, 3.35rem);
+      line-height: 0.95;
       color: var(--orange);
     }
 
     .cd-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
+      font-size: clamp(0.6rem, 1.55vw, 0.72rem);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: 0.35rem;
+      margin-top: clamp(0.38rem, 1.2vw, 0.52rem);
     }
 
-    .launch-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
+    .signup-stack {
+      width: 100%;
+      max-width: min(34rem, 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .cta {
@@ -131,7 +136,9 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      margin-bottom: 1.75rem;
+      width: 100%;
+      margin-top: 0.85rem;
+      margin-bottom: 0;
       padding: 0.9rem 1.5rem;
       background: var(--orange);
       color: var(--dark);
@@ -155,21 +162,13 @@
       transform: translateY(0);
     }
 
-    .form-title {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 0.65rem;
-    }
-
     .waitlist-form {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.75rem;
       justify-content: center;
-      margin-bottom: 0.75rem;
+      align-items: stretch;
+      margin-bottom: 0.65rem;
     }
 
     .waitlist-form input[type="email"] {
@@ -197,46 +196,65 @@
       padding: 0.85rem 1.35rem;
       border: none;
       border-radius: 10px;
-      background: transparent;
-      color: var(--orange);
+      background: var(--orange);
+      color: var(--dark);
       font-family: "Barlow Condensed", sans-serif;
       font-weight: 700;
       font-size: 1rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       cursor: pointer;
-      border: 2px solid var(--orange);
-      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 4px 20px rgba(245, 166, 35, 0.35);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     }
 
     .waitlist-form button:hover {
-      background: rgba(245, 166, 35, 0.15);
+      background: #e8960f;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(245, 166, 35, 0.42);
+    }
+
+    .waitlist-form button:active {
+      transform: translateY(0);
     }
 
     .form-hint {
-      font-size: 0.75rem;
-      color: var(--muted);
-      line-height: 1.45;
-      margin-bottom: 1rem;
+      font-size: 0.72rem;
+      color: rgba(250, 248, 243, 0.52);
+      line-height: 1.5;
+      margin-top: 0.15rem;
+      margin-bottom: 0;
+      text-align: center;
     }
 
     .form-msg {
       display: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--orange);
-      margin-top: 0.5rem;
+      margin-top: 0;
+      margin-bottom: 0.35rem;
+      text-align: center;
     }
 
     .form-msg.visible {
       display: block;
     }
 
+    .footer-note {
+      font-size: 0.72rem;
+      line-height: 1.5;
+      color: rgba(250, 248, 243, 0.5);
+      text-align: center;
+      max-width: 22rem;
+      margin: 2rem auto 0.6rem;
+    }
+
     footer {
-      margin-top: 0.5rem;
+      margin-top: 0;
       margin-bottom: 0;
-      font-size: 0.75rem;
-      color: var(--muted);
+      font-size: 0.72rem;
+      color: rgba(250, 248, 243, 0.5);
     }
 
     footer a {
@@ -248,13 +266,39 @@
       text-decoration: underline;
     }
 
+    @media (min-width: 560px) {
+      .waitlist-form {
+        flex-wrap: nowrap;
+        gap: 1rem;
+      }
+
+      .waitlist-form input[type="email"] {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+
+      .waitlist-form button {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
     @media (max-width: 520px) {
       .countdown {
         max-width: 100%;
+        gap: 0.5rem;
+      }
+
+      .cd-item {
+        border-radius: 11px;
+        padding: 0.62rem 0.28rem;
       }
 
       .waitlist-form {
         flex-direction: column;
+        gap: 0.7rem;
       }
 
       .waitlist-form button {
@@ -272,7 +316,8 @@
       <img class="logo" src="logo.png" width="560" height="auto" alt="Lanbi Nation">
 
       <p class="headline">
-        The app goes live <em>May 22, 2026</em> — join the waitlist
+        The World Cup<br>
+        <em>Is Coming.</em>
       </p>
 
       <div class="countdown" id="countdown" aria-live="polite">
@@ -294,25 +339,27 @@
         </div>
       </div>
 
-      <p class="launch-note" id="launch-zone"></p>
+      <div class="signup-stack">
+        <form class="waitlist-form" id="waitlist-form" method="POST">
+          <input type="email" name="email" placeholder="Enter your email address" required autocomplete="email" aria-label="Email for waitlist">
+          <input type="hidden" name="_subject" value="Lanbi Nation waitlist signup">
+          <button type="submit">Join waitlist</button>
+        </form>
 
-      <a class="cta" href="https://lanbination.com" target="_blank" rel="noopener noreferrer">
-        Visit lanbination.com
-      </a>
+        <p class="form-msg" id="form-msg" role="status"></p>
 
-      <p class="form-title">Waitlist</p>
+        <p class="form-hint">
+          Free to join. No spam. App launching June 11, 2026.
+        </p>
 
-      <form class="waitlist-form" id="waitlist-form" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email" aria-label="Email for waitlist">
-        <input type="hidden" name="_subject" value="Lanbi Nation waitlist signup">
-        <button type="submit">Notify me</button>
-      </form>
+        <a class="cta" href="https://lanbination.com" target="_blank" rel="noopener noreferrer">
+          Visit lanbination.com
+        </a>
+      </div>
 
-      <p class="form-hint">
-        Uses Formspree for delivery — set <code style="color:var(--orange)">FORMSPREE_ENDPOINT</code> in the script below (from your <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">Formspree</a> dashboard).
-        No spam; unsubscribe anytime.
+      <p class="footer-note">
+        We'll only email you about the launch. No spam.
       </p>
-      <p class="form-msg" id="form-msg" role="status"></p>
 
       <footer>
         <a href="mailto:info@lanbination.com">info@lanbination.com</a>
@@ -325,11 +372,8 @@
       /** Full URL from Formspree → Integration → form endpoint, e.g. https://formspree.io/f/abcxyz */
       var FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
-      // Launch instant: May 22, 2026, 12:00 noon Eastern Time (America/New_York)
-      // May 22, 2026 12:00 noon Eastern Daylight Time (UTC−4)
+      // Countdown target: May 22, 2026, 12:00 noon Eastern (EDT, UTC−4)
       var target = new Date("2026-05-22T16:00:00.000Z");
-      document.getElementById("launch-zone").textContent =
-        "Countdown to May 22, 2026 · 12:00 noon Eastern Time";
 
       function pad(n) {
         return n < 10 ? "0" + n : String(n);
