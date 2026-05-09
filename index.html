@@ -40,11 +40,30 @@
       text-align: center;
     }
 
+    @keyframes shell-bg-in {
+      from { transform: scale(1.07); }
+      to { transform: scale(1); }
+    }
+
+    @keyframes content-in {
+      from {
+        opacity: 0;
+        transform: translateY(-1.15rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .shell-bg {
       position: absolute;
       inset: 0;
       background: url("hero.png") center center / cover no-repeat;
       z-index: 0;
+      transform: scale(1.07);
+      transform-origin: center center;
+      animation: shell-bg-in 1.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     .shell-overlay {
@@ -64,6 +83,32 @@
       z-index: 2;
       max-width: min(42rem, 100%);
       width: 100%;
+    }
+
+    .shell-inner > * {
+      opacity: 0;
+      animation: content-in 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .shell-inner > *:nth-child(1) { animation-delay: 0.1s; }
+    .shell-inner > *:nth-child(2) { animation-delay: 0.22s; }
+    .shell-inner > *:nth-child(3) { animation-delay: 0.34s; }
+    .shell-inner > *:nth-child(4) { animation-delay: 0.46s; }
+    .shell-inner > *:nth-child(5) { animation-delay: 0.58s; }
+    .shell-inner > *:nth-child(6) { animation-delay: 0.7s; }
+    .shell-inner > *:nth-child(7) { animation-delay: 0.82s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shell-bg {
+        animation: none;
+        transform: scale(1);
+      }
+
+      .shell-inner > * {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
     }
 
     .logo {
