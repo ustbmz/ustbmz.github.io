@@ -17,6 +17,8 @@
       --ivory: #FAF8F3;
       --dark: #0D1526;
       --muted: rgba(250, 248, 243, 0.72);
+      /* Countdown 下方的表单、说明、Visit、底栏 — 比倒计时略窄 */
+      --below-countdown: min(28rem, 100%);
     }
 
     body {
@@ -98,11 +100,11 @@
     }
 
     .cd-item {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1.5px solid rgba(245, 166, 35, 0.42);
-      border-radius: 14px;
+      /* 与邮箱 input 同款半透明底 + 橙边 */
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(245, 166, 35, 0.4);
+      border-radius: 10px;
       padding: clamp(0.72rem, 2.6vw, 1.15rem) clamp(0.35rem, 1.2vw, 0.65rem);
-      backdrop-filter: blur(10px);
       min-width: 0;
     }
 
@@ -124,7 +126,7 @@
 
     .signup-stack {
       width: 100%;
-      max-width: min(34rem, 100%);
+      max-width: var(--below-countdown);
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -220,11 +222,10 @@
 
     .form-hint {
       font-size: 0.72rem;
-      color: rgba(250, 248, 243, 0.52);
       line-height: 1.5;
-      margin-top: 0.15rem;
-      margin-bottom: 0;
+      color: rgba(250, 248, 243, 0.52);
       text-align: center;
+      margin: 0.15rem auto 0;
     }
 
     .form-msg {
@@ -244,17 +245,21 @@
     .footer-note {
       font-size: 0.72rem;
       line-height: 1.5;
-      color: rgba(250, 248, 243, 0.5);
+      color: rgba(250, 248, 243, 0.52);
       text-align: center;
-      max-width: 22rem;
-      margin: 2rem auto 0.6rem;
+      margin: 2rem auto 0.65rem;
+      max-width: var(--below-countdown);
     }
 
     footer {
       margin-top: 0;
       margin-bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: var(--below-countdown);
       font-size: 0.72rem;
       color: rgba(250, 248, 243, 0.5);
+      text-align: center;
     }
 
     footer a {
@@ -292,7 +297,7 @@
       }
 
       .cd-item {
-        border-radius: 11px;
+        border-radius: 10px;
         padding: 0.62rem 0.28rem;
       }
 
@@ -358,7 +363,7 @@
       </div>
 
       <p class="footer-note">
-        We'll only email you about the launch. No spam.
+        Lanbi Nation is the one app every soccer fan needs — live scores, city guides, fan horn, predictions, and more. 48 nations. 4 languages. One app.
       </p>
 
       <footer>
