@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lanbi Nation — Waitlist</title>
-  <meta name="description" content="Lanbi Nation — The World Cup is coming. Join the waitlist for the fan app.">
+  <meta name="description" content="Lanbi Nation — The World Cup is coming. The app goes live May 22, 2026. Join the waitlist.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -82,10 +82,28 @@
       text-transform: none;
       color: var(--ivory);
       margin-top: clamp(1rem, 3.5vw, 2.25rem);
-      margin-bottom: clamp(1.65rem, 4.5vw, 2.5rem);
+      margin-bottom: 0.55rem;
     }
 
     .headline em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .headline-sub {
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-size: clamp(0.95rem, 2.6vw, 1.2rem);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(250, 248, 243, 0.92);
+      max-width: 34rem;
+      margin: 0 auto clamp(1.35rem, 3.5vw, 2rem);
+      text-align: center;
+    }
+
+    .headline-sub em {
       font-style: normal;
       color: var(--orange);
     }
@@ -323,6 +341,10 @@
       <p class="headline">
         The World Cup<br>
         <em>Is Coming.</em>
+      </p>
+
+      <p class="headline-sub">
+        The app goes live <em>May 22, 2026</em> — join the waitlist
       </p>
 
       <div class="countdown" id="countdown" aria-live="polite">
