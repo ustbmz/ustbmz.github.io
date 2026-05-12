@@ -1,1 +1,0 @@
-import{_ as o,o as d,c as p,a2 as c}from"./chunks/framework.CAKCj7G0.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"面试/虚拟dom.md","filePath":"面试/虚拟dom.md"}'),m={name:"面试/虚拟dom.md"};function r(t,e,l,i,n,a){return d(),p("div",null,[...e[0]||(e[0]=[c("",2)])])}const u=o(m,[["render",r]]);export{_ as __pageData,u as default};
