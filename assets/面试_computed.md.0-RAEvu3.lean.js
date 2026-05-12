@@ -1,1 +1,0 @@
-import{_ as t,o,c as a,a2 as d}from"./chunks/framework.CAKCj7G0.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"面试/computed.md","filePath":"面试/computed.md"}'),c={name:"面试/computed.md"};function r(p,e,l,s,i,u){return o(),a("div",null,[...e[0]||(e[0]=[d("",18)])])}const n=t(c,[["render",r]]);export{m as __pageData,n as default};
