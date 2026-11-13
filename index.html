@@ -5,6 +5,7 @@
   Legacy single-theme backups: index.theme-terminal.html, index.theme-aurora-dark.html
 -->
 <html lang="en" data-theme="github">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,13 +15,15 @@
     // 先于样式应用主题，避免刷新闪烁（旧值 black 迁移为 github）
     // localStorage 在部分沙箱/隐私模式下会被禁用，必须容错
     let __t = "github";
-    try { __t = localStorage.getItem("site_theme") || "github"; } catch (e) {}
+    try { __t = localStorage.getItem("site_theme") || "github"; } catch (e) { }
     document.documentElement.dataset.theme = __t === "black" ? "github" : __t;
-    if (__t === "black") { try { localStorage.setItem("site_theme", "github"); } catch (e) {} }
+    if (__t === "black") { try { localStorage.setItem("site_theme", "github"); } catch (e) { } }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+    rel="stylesheet" />
   <style>
     /* ---------- 主题变量 ---------- */
     :root {
@@ -137,9 +140,15 @@
     }
 
     /* ---------- 结构样式（三主题共用） ---------- */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: var(--sans);
@@ -174,19 +183,27 @@
       pointer-events: none;
       z-index: -1;
     }
+
     html[data-theme="aurora"] body::before {
-      width: 620px; height: 620px;
-      left: -180px; top: -220px;
+      width: 620px;
+      height: 620px;
+      left: -180px;
+      top: -220px;
       background: rgba(124, 92, 255, 0.16);
     }
+
     html[data-theme="aurora"] body::after {
-      width: 560px; height: 560px;
-      right: -200px; top: 30vh;
+      width: 560px;
+      height: 560px;
+      right: -200px;
+      top: 30vh;
       background: rgba(62, 207, 190, 0.10);
     }
 
     /* GitHub 主题：无底纹 */
-    html[data-theme="github"] body::before { content: none; }
+    html[data-theme="github"] body::before {
+      content: none;
+    }
 
     a {
       color: var(--accent-2);
@@ -194,7 +211,10 @@
       text-underline-offset: 3px;
       transition: color 0.15s ease, opacity 0.15s ease;
     }
-    a:hover { text-decoration: underline; }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     .wrap {
       max-width: var(--max);
@@ -206,7 +226,10 @@
       padding: 4.2rem 0 3rem;
       border-bottom: 1px solid var(--line);
     }
-    header .wrap { position: relative; }
+
+    header .wrap {
+      position: relative;
+    }
 
     .eyebrow {
       font-family: var(--eyebrow-font);
@@ -217,7 +240,11 @@
       color: var(--muted);
       margin-bottom: 1.05rem;
     }
-    html[data-theme="aurora"] .eyebrow::before { content: "// "; color: var(--accent); }
+
+    html[data-theme="aurora"] .eyebrow::before {
+      content: "// ";
+      color: var(--accent);
+    }
 
     h1 {
       font-family: var(--head-font);
@@ -229,6 +256,7 @@
       line-height: 1.08;
       margin-bottom: 0.9rem;
     }
+
     html[data-theme="aurora"] h1 {
       font-weight: 700;
       background: var(--grad);
@@ -253,8 +281,17 @@
       font-size: 0.92rem;
       font-weight: 500;
     }
-    nav a { color: var(--ink-soft); text-decoration: none; }
-    nav a:hover { color: var(--accent-2); text-decoration: none; opacity: 1; }
+
+    nav a {
+      color: var(--ink-soft);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--accent-2);
+      text-decoration: none;
+      opacity: 1;
+    }
 
     /* 右上角控制组：极简幽灵样式，融入页面 */
     .top-controls {
@@ -266,6 +303,7 @@
       align-items: center;
       gap: 0.95rem;
     }
+
     /* 主题切换：文字排版式，当前项强调色 + 下划线 */
     .theme-switch {
       display: flex;
@@ -275,11 +313,13 @@
       font-size: 0.72rem;
       font-weight: 500;
     }
+
     .theme-switch .sep {
       color: var(--sep-color);
       user-select: none;
       font-size: 0.68rem;
     }
+
     .theme-switch button {
       font: inherit;
       letter-spacing: 0.02em;
@@ -291,16 +331,22 @@
       cursor: pointer;
       transition: color 0.15s ease, border-color 0.15s ease;
     }
-    .theme-switch button:hover { color: var(--ink); }
+
+    .theme-switch button:hover {
+      color: var(--ink);
+    }
+
     .theme-switch button.active {
       color: var(--accent-2);
       border-bottom-color: var(--accent-2);
     }
+
     .theme-switch button:focus-visible {
       outline: none;
       color: var(--accent-2);
       border-bottom-color: var(--accent-2);
     }
+
     /* 语言切换：纯文字，当前语言用强调色 */
     .lang-toggle {
       display: flex;
@@ -309,6 +355,7 @@
       padding-left: 0.95rem;
       border-left: 1px solid var(--line);
     }
+
     .lang-toggle button {
       font-family: var(--eyebrow-font);
       font-size: 0.72rem;
@@ -321,16 +368,36 @@
       cursor: pointer;
       transition: color 0.15s ease;
     }
-    .lang-toggle button:hover { color: var(--ink); }
-    .lang-toggle button.active { color: var(--accent-2); font-weight: 600; }
-    .lang-toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
-    [lang-hidden] { display: none !important; }
+    .lang-toggle button:hover {
+      color: var(--ink);
+    }
 
-    main { padding: 2.8rem 0 4rem; }
+    .lang-toggle button.active {
+      color: var(--accent-2);
+      font-weight: 600;
+    }
 
-    section { margin-bottom: 3rem; }
-    section:last-child { margin-bottom: 0; }
+    .lang-toggle button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    [lang-hidden] {
+      display: none !important;
+    }
+
+    main {
+      padding: 2.8rem 0 4rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section:last-child {
+      margin-bottom: 0;
+    }
 
     h2 {
       font-family: var(--head-font);
@@ -343,6 +410,7 @@
       align-items: center;
       gap: 0.7rem;
     }
+
     h2::after {
       content: "";
       flex: 1;
@@ -350,7 +418,10 @@
       background: var(--divider);
     }
 
-    .about p { margin-bottom: 1rem; color: var(--ink-soft); }
+    .about p {
+      margin-bottom: 1rem;
+      color: var(--ink-soft);
+    }
 
     .links-row {
       display: flex;
@@ -358,6 +429,7 @@
       gap: 0.65rem 1rem;
       margin-top: 1.35rem;
     }
+
     .links-row a {
       display: inline-block;
       font-size: 0.88rem;
@@ -371,6 +443,7 @@
       text-decoration: none;
       transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
     }
+
     .links-row a:hover {
       border-color: var(--accent);
       color: var(--ink);
@@ -378,7 +451,11 @@
       text-decoration: none;
       transform: translateY(-2px);
     }
-    html[data-theme="light"] .links-row a:hover { background: var(--accent-soft); color: var(--accent); }
+
+    html[data-theme="light"] .links-row a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
 
     .project-list {
       display: flex;
@@ -398,6 +475,7 @@
       backdrop-filter: blur(10px);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
+
     a.card:hover {
       transform: translateY(-3px);
       background: var(--card-hover-bg);
@@ -405,7 +483,11 @@
       text-decoration: none;
       opacity: 1;
     }
-    a.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    a.card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
 
     .card h3 {
       font-family: var(--head-font);
@@ -414,13 +496,17 @@
       color: var(--ink);
       margin-bottom: 0.38rem;
     }
+
     html[data-theme="aurora"] a.card:hover h3 {
       background: var(--grad);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    html[data-theme="github"] a.card:hover h3 { color: var(--accent); }
+
+    html[data-theme="github"] a.card:hover h3 {
+      color: var(--accent);
+    }
 
     .card .repo-url {
       font-family: var(--mono);
@@ -437,7 +523,12 @@
       line-height: 1.6;
     }
 
-    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
     .tags span {
       font-family: var(--mono);
       font-size: 0.71rem;
@@ -454,6 +545,7 @@
       border-top: 1px solid var(--line);
       text-align: center;
     }
+
     footer .foot-inner {
       display: flex;
       flex-direction: column;
@@ -462,6 +554,7 @@
       max-width: 26rem;
       margin: 0 auto;
     }
+
     footer .foot-brand {
       font-family: var(--eyebrow-font);
       font-size: 0.87rem;
@@ -469,13 +562,22 @@
       color: var(--ink);
       letter-spacing: 0.01em;
     }
+
     footer .foot-lede {
       font-size: 0.84rem;
       color: var(--muted);
       line-height: 1.55;
     }
-    footer .foot-lede a { font-weight: 500; color: var(--accent-2); }
-    footer .foot-lede a:hover { opacity: 1; }
+
+    footer .foot-lede a {
+      font-weight: 500;
+      color: var(--accent-2);
+    }
+
+    footer .foot-lede a:hover {
+      opacity: 1;
+    }
+
     footer .foot-actions {
       display: flex;
       flex-wrap: wrap;
@@ -485,23 +587,42 @@
       font-size: 0.8rem;
       color: var(--muted);
     }
-    footer .foot-actions a { font-weight: 500; color: var(--ink-soft); text-decoration: none; }
-    footer .foot-actions a:hover { color: var(--accent-2); text-decoration: underline; opacity: 1; }
-    footer .foot-actions .sep { color: var(--sep-color); user-select: none; }
+
+    footer .foot-actions a {
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+    }
+
+    footer .foot-actions a:hover {
+      color: var(--accent-2);
+      text-decoration: underline;
+      opacity: 1;
+    }
+
+    footer .foot-actions .sep {
+      color: var(--sep-color);
+      user-select: none;
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      a.card:hover, .links-row a:hover { transform: none; }
+
+      a.card:hover,
+      .links-row a:hover {
+        transform: none;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="top-controls">
     <div class="theme-switch" role="group" aria-label="Theme">
-      <button data-t="light" type="button">Light</button>
+      <button data-t="github" type="button">GitHub</button>
       <span class="sep" aria-hidden="true">/</span>
       <button data-t="aurora" type="button">Aurora</button>
       <span class="sep" aria-hidden="true">/</span>
-      <button data-t="github" type="button">GitHub</button>
+      <button data-t="light" type="button">Light</button>
     </div>
     <div class="lang-toggle" role="group" aria-label="Language">
       <button data-l="en" type="button" title="English">EN</button>
@@ -513,7 +634,8 @@
     <div class="wrap">
       <p class="eyebrow" data-i18n="eyebrow">Portfolio</p>
       <h1>Miles</h1>
-      <p class="lead" data-i18n="lead">Full-stack / front-end engineer with a blockchain focus. Open-source projects, plain HTML.</p>
+      <p class="lead" data-i18n="lead">Full-stack / front-end engineer with a blockchain focus. Open-source projects,
+        plain HTML.</p>
       <nav>
         <a href="#about" data-i18n="nav.about">About</a>
         <a href="#projects" data-i18n="nav.projects">Projects</a>
@@ -526,7 +648,10 @@
       <section id="about" class="about">
         <h2 data-i18n="about.title">About</h2>
         <p data-i18n="about.p1">
-          I&rsquo;m Miles. I build web products end to end and care about front-end engineering. I&rsquo;ve shipped community, blog-style, and Q&amp;A / learning apps on my own, using both Vue and React, with Node backends (Koa / Express) and MongoDB. Lately I&rsquo;ve been deep in blockchain development &mdash; Solidity, go-ethereum, and DeFi protocols.
+          I&rsquo;m Miles. I build web products end to end and care about front-end engineering. I&rsquo;ve shipped
+          community, blog-style, and Q&amp;A / learning apps on my own, using both Vue and React, with Node backends
+          (Koa / Express) and MongoDB. Lately I&rsquo;ve been deep in blockchain development &mdash; Solidity,
+          go-ethereum, and DeFi protocols.
         </p>
         <p data-i18n="about.p2">
           Feel free to reach out on GitHub or by email for collaboration or hiring inquiries.
@@ -543,7 +668,9 @@
           <a class="card" href="https://github.com/ustbmz/Lumen" target="_blank" rel="noopener noreferrer">
             <h3>Lumen</h3>
             <p class="repo-url">github.com/ustbmz/Lumen</p>
-            <p class="desc" data-i18n="lumen.desc">Decoupled blog / community stack: public app, admin console, and Koa API as separate packages you can develop and deploy on their own. Posts, comments, user center, RBAC in the admin UI, and Markdown-oriented editing.</p>
+            <p class="desc" data-i18n="lumen.desc">Decoupled blog / community stack: public app, admin console, and Koa
+              API as separate packages you can develop and deploy on their own. Posts, comments, user center, RBAC in
+              the admin UI, and Markdown-oriented editing.</p>
             <div class="tags">
               <span>Vue 2</span><span>Vuex</span><span>Koa 2</span><span>MongoDB</span><span>Redis</span>
             </div>
@@ -552,7 +679,8 @@
           <a class="card" href="https://github.com/ustbmz/codestation" target="_blank" rel="noopener noreferrer">
             <h3>CodeStation</h3>
             <p class="repo-url">github.com/ustbmz/codestation</p>
-            <p class="desc" data-i18n="code.desc">Full-stack React practice: user SPA (CRA + Redux Toolkit + React Router) and operations console (Umi Max + Ant Design Pro), both backed by one Express + MongoDB API.</p>
+            <p class="desc" data-i18n="code.desc">Full-stack React practice: user SPA (CRA + Redux Toolkit + React
+              Router) and operations console (Umi Max + Ant Design Pro), both backed by one Express + MongoDB API.</p>
             <div class="tags">
               <span>React 18</span><span>Umi 4</span><span>Ant Design</span><span>Express</span><span>MongoDB</span>
             </div>
@@ -561,18 +689,25 @@
           <a class="card" href="https://ustbmz.github.io/ERC/" target="_blank" rel="noopener noreferrer">
             <h3 data-i18n="erc.title">ERC / EIP Reference</h3>
             <p class="repo-url">ustbmz.github.io/ERC · github.com/ustbmz/ERC</p>
-            <p class="desc" data-i18n="erc.desc">Quick-reference handbook for Ethereum ERC / EIP standards: token, DeFi, NFT, wallet and AI + Web3 related proposals, each with key interfaces, events and when to use it. Live on GitHub Pages.</p>
+            <p class="desc" data-i18n="erc.desc">Quick-reference handbook for Ethereum ERC / EIP standards: token, DeFi,
+              NFT, wallet and AI + Web3 related proposals, each with key interfaces, events and when to use it. Live on
+              GitHub Pages.</p>
             <div class="tags">
-              <span>Ethereum</span><span>ERC-20</span><span>ERC-721</span><span>Static Site</span><span>GitHub Pages</span>
+              <span>Ethereum</span><span>ERC-20</span><span>ERC-721</span><span>Static Site</span><span>GitHub
+                Pages</span>
             </div>
           </a>
 
           <a class="card" href="https://ustbmz.github.io/BlockchainStudy/" target="_blank" rel="noopener noreferrer">
             <h3 data-i18n="block.title">Blockchain Study Center</h3>
             <p class="repo-url">ustbmz.github.io/BlockchainStudy · github.com/ustbmz/BlockchainStudy</p>
-            <p class="desc" data-i18n="block.desc">Review center for a blockchain-engineer course: 66 notes and 63 flashcards across Go backend, Solidity, go-ethereum and DeFi (Uniswap V2/V3), plus a 33-step guided learning path with progress tracking, full-text search, code highlighting and KaTeX math. Zero-dependency static SPA.</p>
+            <p class="desc" data-i18n="block.desc">Review center for a blockchain-engineer course: 66 notes and 63
+              flashcards across Go backend, Solidity, go-ethereum and DeFi (Uniswap V2/V3), plus a 33-step guided
+              learning path with progress tracking, full-text search, code highlighting and KaTeX math. Zero-dependency
+              static SPA.</p>
             <div class="tags">
-              <span>Vanilla JS SPA</span><span>marked</span><span>highlight.js</span><span>KaTeX</span><span>GitHub Pages</span>
+              <span>Vanilla JS SPA</span><span>marked</span><span>highlight.js</span><span>KaTeX</span><span>GitHub
+                Pages</span>
             </div>
           </a>
         </div>
@@ -586,13 +721,19 @@
       <div class="foot-inner">
         <p class="foot-brand">© <span id="year"></span> Miles</p>
         <p class="foot-lede">
-          <span class="i18n-en">Personal site hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a> at <a href="https://ustbmz.github.io/" target="_blank" rel="noopener noreferrer">ustbmz.github.io</a>.</span>
-          <span class="i18n-zh" lang-hidden>个人网站托管在 <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>：<a href="https://ustbmz.github.io/" target="_blank" rel="noopener noreferrer">ustbmz.github.io</a>。</span>
+          <span class="i18n-en">Personal site hosted on <a href="https://pages.github.com/" target="_blank"
+              rel="noopener noreferrer">GitHub Pages</a> at <a href="https://ustbmz.github.io/" target="_blank"
+              rel="noopener noreferrer">ustbmz.github.io</a>.</span>
+          <span class="i18n-zh" lang-hidden>个人网站托管在 <a href="https://pages.github.com/" target="_blank"
+              rel="noopener noreferrer">GitHub Pages</a>：<a href="https://ustbmz.github.io/" target="_blank"
+              rel="noopener noreferrer">ustbmz.github.io</a>。</span>
         </p>
         <p class="foot-actions">
-          <a href="https://github.com/ustbmz" target="_blank" rel="noopener noreferrer" data-i18n="foot.profile">Profile</a>
+          <a href="https://github.com/ustbmz" target="_blank" rel="noopener noreferrer"
+            data-i18n="foot.profile">Profile</a>
           <span class="sep" aria-hidden="true">·</span>
-          <a href="https://github.com/ustbmz/ustbmz.github.io" target="_blank" rel="noopener noreferrer" data-i18n="foot.repo">Site repository</a>
+          <a href="https://github.com/ustbmz/ustbmz.github.io" target="_blank" rel="noopener noreferrer"
+            data-i18n="foot.repo">Site repository</a>
         </p>
       </div>
     </div>
@@ -603,14 +744,14 @@
 
     // localStorage 安全封装：沙箱/隐私模式下禁用时不让脚本中断
     const store = {
-      get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-      set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+      get (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+      set (k, v) { try { localStorage.setItem(k, v); } catch (e) { } },
     };
 
     // ---------- 主题切换：分段控件（light / aurora / github） ----------
     const themeBtns = document.querySelectorAll(".theme-switch button");
 
-    function applyTheme(t) {
+    function applyTheme (t) {
       document.documentElement.dataset.theme = t;
       themeBtns.forEach(b => b.classList.toggle("active", b.dataset.t === t));
       store.set("site_theme", t);
@@ -660,7 +801,7 @@
 
     const langBtns = document.querySelectorAll(".lang-toggle button");
 
-    function applyLang(lang) {
+    function applyLang (lang) {
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const v = I18N[lang][el.dataset.i18n];
         if (typeof v === "string") el.textContent = v;
@@ -680,4 +821,5 @@
     applyLang(saved || ((navigator.language || "en").toLowerCase().startsWith("zh") ? "zh" : "en"));
   </script>
 </body>
+
 </html>
