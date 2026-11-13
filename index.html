@@ -4,7 +4,7 @@
   Switch via the top-right theme button; choice persists in localStorage (site_theme).
   Legacy single-theme backups: index.theme-terminal.html, index.theme-aurora-dark.html
 -->
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="github">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,8 +13,8 @@
   <script>
     // 先于样式应用主题，避免刷新闪烁（旧值 black 迁移为 github）
     // localStorage 在部分沙箱/隐私模式下会被禁用，必须容错
-    let __t = "light";
-    try { __t = localStorage.getItem("site_theme") || "light"; } catch (e) {}
+    let __t = "github";
+    try { __t = localStorage.getItem("site_theme") || "github"; } catch (e) {}
     document.documentElement.dataset.theme = __t === "black" ? "github" : __t;
     if (__t === "black") { try { localStorage.setItem("site_theme", "github"); } catch (e) {} }
   </script>
@@ -616,7 +616,7 @@
       store.set("site_theme", t);
     }
     themeBtns.forEach(b => { b.onclick = () => applyTheme(b.dataset.t); });
-    applyTheme(document.documentElement.dataset.theme || "light");
+    applyTheme(document.documentElement.dataset.theme || "github");
 
     // ---------- 中英双语 ----------
     const I18N = {
