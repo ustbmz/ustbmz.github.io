@@ -1,56 +1,159 @@
 <!DOCTYPE html>
 <!--
-  Theme: editorial-light (current)
-  To restore terminal / dev style: copy index.theme-terminal.html over this file
-    cp index.theme-terminal.html index.html
+  Themes: light (editorial) / aurora (dark glow) / github (GitHub Light, Primer)
+  Switch via the top-right theme button; choice persists in localStorage (site_theme).
+  Legacy single-theme backups: index.theme-terminal.html, index.theme-aurora-dark.html
 -->
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Miles — full-stack / front-end engineer. Projects." />
+  <meta name="description" content="Miles — full-stack / front-end & blockchain engineer. Projects." />
   <title>Miles · Personal site</title>
+  <script>
+    // 先于样式应用主题，避免刷新闪烁（旧值 black 迁移为 github）
+    // localStorage 在部分沙箱/隐私模式下会被禁用，必须容错
+    let __t = "light";
+    try { __t = localStorage.getItem("site_theme") || "light"; } catch (e) {}
+    document.documentElement.dataset.theme = __t === "black" ? "github" : __t;
+    if (__t === "black") { try { localStorage.setItem("site_theme", "github"); } catch (e) {} }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
+    /* ---------- 主题变量 ---------- */
     :root {
-      --paper: #f6f3ec;
-      --paper-2: #efe9df;
+      --bg: #f6f3ec;
+      --bg-2: #efe9df;
       --ink: #141218;
       --ink-soft: #4a4656;
       --muted: #7a7585;
       --accent: #b54a35;
+      --accent-2: #b54a35;
       --accent-soft: rgba(181, 74, 53, 0.12);
+      --grad: none;
       --card: #fffcf7;
+      --card-hover-bg: #fffcf7;
+      --card-border: rgba(20, 18, 24, 0.06);
+      --card-hover-border: rgba(181, 74, 53, 0.25);
       --shadow: 0 12px 40px rgba(20, 18, 24, 0.08);
       --radius: 16px;
       --max: 640px;
       --serif: "Fraunces", Georgia, "Times New Roman", serif;
       --sans: "DM Sans", system-ui, sans-serif;
+      --mono: ui-monospace, "Cascadia Code", monospace;
+      --head-font: var(--serif);
+      --eyebrow-font: var(--sans);
+      --fs: 17px;
+      --line: rgba(20, 18, 24, 0.08);
+      --divider: transparent;
+      --btn-bg: #fffcf7;
+      --btn-border: rgba(20, 18, 24, 0.12);
+      --btn-color: #141218;
+      --btn-hover-border: #b54a35;
+      --btn-hover-color: #b54a35;
+      --tag-bg: var(--bg-2);
+      --tag-color: var(--muted);
+      --tag-border: transparent;
+      --tag-radius: 6px;
+      --pill-radius: 999px;
+      --sep-color: rgba(122, 117, 133, 0.45);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    html[data-theme="aurora"] {
+      --bg: #0b0d12;
+      --bg-2: #10131a;
+      --ink: #eef0f6;
+      --ink-soft: #a8adbd;
+      --muted: #6d7386;
+      --accent: #7c5cff;
+      --accent-2: #3ecfbe;
+      --accent-soft: rgba(124, 92, 255, 0.14);
+      --grad: linear-gradient(100deg, #7c5cff 10%, #4f8bff 50%, #3ecfbe 90%);
+      --card: rgba(255, 255, 255, 0.035);
+      --card-hover-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.09);
+      --card-hover-border: rgba(124, 92, 255, 0.45);
+      --shadow: none;
+      --radius: 18px;
+      --max: 680px;
+      --sans: "Space Grotesk", "Noto Sans SC", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+      --head-font: var(--sans);
+      --eyebrow-font: var(--mono);
+      --fs: 16.5px;
+      --line: rgba(255, 255, 255, 0.07);
+      --divider: linear-gradient(to right, rgba(255, 255, 255, 0.14), transparent);
+      --btn-bg: rgba(255, 255, 255, 0.05);
+      --btn-border: rgba(255, 255, 255, 0.14);
+      --btn-color: #a8adbd;
+      --btn-hover-border: #7c5cff;
+      --btn-hover-color: #eef0f6;
+      --tag-bg: rgba(62, 207, 190, 0.08);
+      --tag-color: #3ecfbe;
+      --tag-border: rgba(62, 207, 190, 0.18);
+      --tag-radius: 999px;
+      --pill-radius: 10px;
+      --sep-color: rgba(109, 115, 134, 0.45);
     }
 
-    html {
-      scroll-behavior: smooth;
+    html[data-theme="github"] {
+      /* GitHub Light 官方色板（Primer Light，与 BlockchainStudy 同款） */
+      --bg: #ffffff;
+      --bg-2: #f6f8fa;
+      --ink: #1f2328;
+      --ink-soft: #59636e;
+      --muted: #656d76;
+      --accent: #0969da;
+      --accent-2: #0969da;
+      --accent-soft: rgba(9, 105, 218, 0.1);
+      --grad: none;
+      --card: #ffffff;
+      --card-hover-bg: #ffffff;
+      --card-border: #d1d9e0;
+      --card-hover-border: #0969da;
+      --shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
+      --radius: 6px;
+      --max: 640px;
+      --sans: "DM Sans", "Noto Sans SC", system-ui, sans-serif;
+      --mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", monospace;
+      --head-font: var(--sans);
+      --eyebrow-font: var(--mono);
+      --fs: 16.5px;
+      --line: #d8dee4;
+      --divider: linear-gradient(to right, #d1d9e0, transparent);
+      --btn-bg: #f6f8fa;
+      --btn-border: #d1d9e0;
+      --btn-color: #1f2328;
+      --btn-hover-border: #8c959f;
+      --btn-hover-color: #1f2328;
+      --tag-bg: #ddf4ff;
+      --tag-color: #0969da;
+      --tag-border: transparent;
+      --tag-radius: 999px;
+      --pill-radius: 6px;
+      --sep-color: #d1d9e0;
     }
+
+    /* ---------- 结构样式（三主题共用） ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--sans);
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink-soft);
       line-height: 1.65;
-      font-size: 17px;
+      font-size: var(--fs);
       min-height: 100vh;
       font-optical-sizing: auto;
+      overflow-x: hidden;
     }
 
-    body::before {
+    /* 浅色主题的柔和底纹 */
+    html[data-theme="light"] body::before {
       content: "";
       position: fixed;
       inset: 0;
@@ -61,101 +164,193 @@
       z-index: -1;
     }
 
+    /* Aurora 极光光晕 */
+    html[data-theme="aurora"] body::before,
+    html[data-theme="aurora"] body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(110px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    html[data-theme="aurora"] body::before {
+      width: 620px; height: 620px;
+      left: -180px; top: -220px;
+      background: rgba(124, 92, 255, 0.16);
+    }
+    html[data-theme="aurora"] body::after {
+      width: 560px; height: 560px;
+      right: -200px; top: 30vh;
+      background: rgba(62, 207, 190, 0.10);
+    }
+
+    /* GitHub 主题：无底纹 */
+    html[data-theme="github"] body::before { content: none; }
+
     a {
-      color: var(--accent);
+      color: var(--accent-2);
       text-decoration: none;
       text-underline-offset: 3px;
       transition: color 0.15s ease, opacity 0.15s ease;
     }
-
-    a:hover {
-      opacity: 0.88;
-      text-decoration: underline;
-    }
+    a:hover { text-decoration: underline; }
 
     .wrap {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 0 1.35rem;
+      padding: 0 1.4rem;
     }
 
     header {
-      padding: 4rem 0 3rem;
-      border-bottom: 1px solid rgba(20, 18, 24, 0.08);
+      padding: 4.2rem 0 3rem;
+      border-bottom: 1px solid var(--line);
     }
+    header .wrap { position: relative; }
 
     .eyebrow {
+      font-family: var(--eyebrow-font);
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 1rem;
+      margin-bottom: 1.05rem;
     }
+    html[data-theme="aurora"] .eyebrow::before { content: "// "; color: var(--accent); }
 
     h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 7vw, 3.15rem);
+      font-family: var(--head-font);
+      font-size: clamp(2.4rem, 7vw, 3.3rem);
       font-weight: 600;
       font-variation-settings: "SOFT" 40, "WONK" 1;
       color: var(--ink);
       letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 0.85rem;
+      line-height: 1.08;
+      margin-bottom: 0.9rem;
+    }
+    html[data-theme="aurora"] h1 {
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .lead {
       font-size: 1.05rem;
       color: var(--ink-soft);
-      max-width: 34ch;
+      max-width: 35ch;
       line-height: 1.55;
     }
 
     nav {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 0.5rem 1.25rem;
       margin-top: 2rem;
       font-size: 0.92rem;
       font-weight: 500;
     }
+    nav a { color: var(--ink-soft); text-decoration: none; }
+    nav a:hover { color: var(--accent-2); text-decoration: none; opacity: 1; }
 
-    nav a {
-      color: var(--ink-soft);
-      text-decoration: none;
+    /* 右上角控制组：极简幽灵样式，融入页面 */
+    .top-controls {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.3rem;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
     }
+    /* 主题切换：文字排版式，当前项强调色 + 下划线 */
+    .theme-switch {
+      display: flex;
+      align-items: center;
+      gap: 0.42rem;
+      font-family: var(--eyebrow-font);
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+    .theme-switch .sep {
+      color: var(--sep-color);
+      user-select: none;
+      font-size: 0.68rem;
+    }
+    .theme-switch button {
+      font: inherit;
+      letter-spacing: 0.02em;
+      padding: 0.12rem 0.1rem 0.18rem;
+      border: none;
+      border-bottom: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .theme-switch button:hover { color: var(--ink); }
+    .theme-switch button.active {
+      color: var(--accent-2);
+      border-bottom-color: var(--accent-2);
+    }
+    .theme-switch button:focus-visible {
+      outline: none;
+      color: var(--accent-2);
+      border-bottom-color: var(--accent-2);
+    }
+    /* 语言切换：纯文字，当前语言用强调色 */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      padding-left: 0.95rem;
+      border-left: 1px solid var(--line);
+    }
+    .lang-toggle button {
+      font-family: var(--eyebrow-font);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.16rem 0.3rem;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+    .lang-toggle button:hover { color: var(--ink); }
+    .lang-toggle button.active { color: var(--accent-2); font-weight: 600; }
+    .lang-toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
-    nav a:hover {
-      color: var(--accent);
-      text-decoration: none;
-      opacity: 1;
-    }
+    [lang-hidden] { display: none !important; }
 
-    main {
-      padding: 2.75rem 0 4rem;
-    }
+    main { padding: 2.8rem 0 4rem; }
 
-    section {
-      margin-bottom: 3rem;
-    }
-
-    section:last-child {
-      margin-bottom: 0;
-    }
+    section { margin-bottom: 3rem; }
+    section:last-child { margin-bottom: 0; }
 
     h2 {
-      font-family: var(--serif);
-      font-size: 1.35rem;
+      font-family: var(--head-font);
+      font-size: 1.32rem;
       font-weight: 600;
       color: var(--ink);
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.15rem;
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
     }
 
-    .about p {
-      margin-bottom: 1rem;
-      color: var(--ink-soft);
-    }
+    .about p { margin-bottom: 1rem; color: var(--ink-soft); }
 
     .links-row {
       display: flex;
@@ -163,27 +358,27 @@
       gap: 0.65rem 1rem;
       margin-top: 1.35rem;
     }
-
     .links-row a {
       display: inline-block;
       font-size: 0.88rem;
       font-weight: 500;
       padding: 0.45rem 0.95rem;
-      border-radius: 999px;
+      border-radius: var(--pill-radius);
       background: var(--card);
       color: var(--ink);
-      border: 1px solid rgba(20, 18, 24, 0.08);
-      box-shadow: 0 2px 8px rgba(20, 18, 24, 0.04);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
       text-decoration: none;
+      transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
     }
-
     .links-row a:hover {
       border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
+      color: var(--ink);
       opacity: 1;
       text-decoration: none;
+      transform: translateY(-2px);
     }
+    html[data-theme="light"] .links-row a:hover { background: var(--accent-soft); color: var(--accent); }
 
     .project-list {
       display: flex;
@@ -196,74 +391,69 @@
       color: inherit;
       text-decoration: none;
       background: var(--card);
-      border: 1px solid rgba(20, 18, 24, 0.06);
+      border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      padding: 1.35rem 1.4rem;
+      padding: 1.4rem 1.45rem;
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
-
     a.card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 20px 48px rgba(20, 18, 24, 0.12);
-      border-color: rgba(181, 74, 53, 0.25);
+      background: var(--card-hover-bg);
+      border-color: var(--card-hover-border);
       text-decoration: none;
       opacity: 1;
     }
-
-    a.card:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
+    a.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
     .card h3 {
-      font-family: var(--serif);
-      font-size: 1.25rem;
+      font-family: var(--head-font);
+      font-size: 1.24rem;
       font-weight: 600;
       color: var(--ink);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.38rem;
     }
-
-    a.card:hover h3 {
-      color: var(--accent);
+    html[data-theme="aurora"] a.card:hover h3 {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+    html[data-theme="github"] a.card:hover h3 { color: var(--accent); }
 
     .card .repo-url {
-      font-family: ui-monospace, "Cascadia Code", monospace;
-      font-size: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
       color: var(--muted);
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.68rem;
       word-break: break-all;
     }
 
     .card .desc {
-      font-size: 0.94rem;
+      font-size: 0.93rem;
       color: var(--ink-soft);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.9rem;
       line-height: 1.6;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tags span {
-      font-size: 0.72rem;
+      font-family: var(--mono);
+      font-size: 0.71rem;
       font-weight: 500;
-      color: var(--muted);
-      background: var(--paper-2);
-      padding: 0.25rem 0.55rem;
-      border-radius: 6px;
+      color: var(--tag-color);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 0.24rem 0.6rem;
+      border-radius: var(--tag-radius);
     }
 
     footer {
-      padding: 2.25rem 0 2.75rem;
-      border-top: 1px solid rgba(20, 18, 24, 0.08);
+      padding: 2.3rem 0 2.8rem;
+      border-top: 1px solid var(--line);
       text-align: center;
     }
-
     footer .foot-inner {
       display: flex;
       flex-direction: column;
@@ -272,29 +462,20 @@
       max-width: 26rem;
       margin: 0 auto;
     }
-
     footer .foot-brand {
-      font-size: 0.88rem;
+      font-family: var(--eyebrow-font);
+      font-size: 0.87rem;
       font-weight: 600;
       color: var(--ink);
       letter-spacing: 0.01em;
     }
-
     footer .foot-lede {
       font-size: 0.84rem;
       color: var(--muted);
       line-height: 1.55;
     }
-
-    footer .foot-lede a {
-      font-weight: 500;
-      color: var(--accent);
-    }
-
-    footer .foot-lede a:hover {
-      opacity: 1;
-    }
-
+    footer .foot-lede a { font-weight: 500; color: var(--accent-2); }
+    footer .foot-lede a:hover { opacity: 1; }
     footer .foot-actions {
       display: flex;
       flex-wrap: wrap;
@@ -304,40 +485,38 @@
       font-size: 0.8rem;
       color: var(--muted);
     }
-
-    footer .foot-actions a {
-      font-weight: 500;
-      color: var(--ink-soft);
-      text-decoration: none;
-    }
-
-    footer .foot-actions a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-      opacity: 1;
-    }
-
-    footer .foot-actions .sep {
-      color: rgba(122, 117, 133, 0.45);
-      user-select: none;
-    }
+    footer .foot-actions a { font-weight: 500; color: var(--ink-soft); text-decoration: none; }
+    footer .foot-actions a:hover { color: var(--accent-2); text-decoration: underline; opacity: 1; }
+    footer .foot-actions .sep { color: var(--sep-color); user-select: none; }
 
     @media (prefers-reduced-motion: reduce) {
-      a.card:hover {
-        transform: none;
-      }
+      a.card:hover, .links-row a:hover { transform: none; }
     }
   </style>
 </head>
 <body>
+  <div class="top-controls">
+    <div class="theme-switch" role="group" aria-label="Theme">
+      <button data-t="light" type="button">Light</button>
+      <span class="sep" aria-hidden="true">/</span>
+      <button data-t="aurora" type="button">Aurora</button>
+      <span class="sep" aria-hidden="true">/</span>
+      <button data-t="github" type="button">GitHub</button>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button data-l="en" type="button" title="English">EN</button>
+      <button data-l="zh" type="button" title="中文">中</button>
+    </div>
+  </div>
+
   <header>
     <div class="wrap">
-      <p class="eyebrow">Portfolio</p>
+      <p class="eyebrow" data-i18n="eyebrow">Portfolio</p>
       <h1>Miles</h1>
-      <p class="lead">Full-stack / front-end engineer. Open-source projects, plain HTML.</p>
+      <p class="lead" data-i18n="lead">Full-stack / front-end engineer with a blockchain focus. Open-source projects, plain HTML.</p>
       <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
       </nav>
     </div>
   </header>
@@ -345,11 +524,11 @@
   <main>
     <div class="wrap">
       <section id="about" class="about">
-        <h2>About</h2>
-        <p>
-          I&rsquo;m Miles. I build web products end to end and care about front-end engineering. I&rsquo;ve shipped community, blog-style, and Q&amp;A / learning apps on my own, using both Vue and React, with Node backends (Koa / Express) and MongoDB.
+        <h2 data-i18n="about.title">About</h2>
+        <p data-i18n="about.p1">
+          I&rsquo;m Miles. I build web products end to end and care about front-end engineering. I&rsquo;ve shipped community, blog-style, and Q&amp;A / learning apps on my own, using both Vue and React, with Node backends (Koa / Express) and MongoDB. Lately I&rsquo;ve been deep in blockchain development &mdash; Solidity, go-ethereum, and DeFi protocols.
         </p>
-        <p>
+        <p data-i18n="about.p2">
           Feel free to reach out on GitHub or by email for collaboration or hiring inquiries.
         </p>
         <div class="links-row">
@@ -359,31 +538,41 @@
       </section>
 
       <section id="projects">
-        <h2>Projects</h2>
+        <h2 data-i18n="projects.title">Projects</h2>
         <div class="project-list">
           <a class="card" href="https://github.com/ustbmz/Lumen" target="_blank" rel="noopener noreferrer">
             <h3>Lumen</h3>
             <p class="repo-url">github.com/ustbmz/Lumen</p>
-            <p class="desc">Decoupled blog / community stack: public app, admin console, and Koa API as separate packages you can develop and deploy on their own. Posts, comments, user center, RBAC in the admin UI, and Markdown-oriented editing.</p>
+            <p class="desc" data-i18n="lumen.desc">Decoupled blog / community stack: public app, admin console, and Koa API as separate packages you can develop and deploy on their own. Posts, comments, user center, RBAC in the admin UI, and Markdown-oriented editing.</p>
             <div class="tags">
-              <span>Vue 2</span>
-              <span>Vuex</span>
-              <span>Koa 2</span>
-              <span>MongoDB</span>
-              <span>Redis</span>
+              <span>Vue 2</span><span>Vuex</span><span>Koa 2</span><span>MongoDB</span><span>Redis</span>
             </div>
           </a>
 
           <a class="card" href="https://github.com/ustbmz/codestation" target="_blank" rel="noopener noreferrer">
             <h3>CodeStation</h3>
             <p class="repo-url">github.com/ustbmz/codestation</p>
-            <p class="desc">Full-stack React practice: user SPA (CRA + Redux Toolkit + React Router) and operations console (Umi Max + Ant Design Pro), both backed by one Express + MongoDB API.</p>
+            <p class="desc" data-i18n="code.desc">Full-stack React practice: user SPA (CRA + Redux Toolkit + React Router) and operations console (Umi Max + Ant Design Pro), both backed by one Express + MongoDB API.</p>
             <div class="tags">
-              <span>React 18</span>
-              <span>Umi 4</span>
-              <span>Ant Design</span>
-              <span>Express</span>
-              <span>MongoDB</span>
+              <span>React 18</span><span>Umi 4</span><span>Ant Design</span><span>Express</span><span>MongoDB</span>
+            </div>
+          </a>
+
+          <a class="card" href="https://ustbmz.github.io/ERC/" target="_blank" rel="noopener noreferrer">
+            <h3 data-i18n="erc.title">ERC / EIP Reference</h3>
+            <p class="repo-url">ustbmz.github.io/ERC · github.com/ustbmz/ERC</p>
+            <p class="desc" data-i18n="erc.desc">Quick-reference handbook for Ethereum ERC / EIP standards: token, DeFi, NFT, wallet and AI + Web3 related proposals, each with key interfaces, events and when to use it. Live on GitHub Pages.</p>
+            <div class="tags">
+              <span>Ethereum</span><span>ERC-20</span><span>ERC-721</span><span>Static Site</span><span>GitHub Pages</span>
+            </div>
+          </a>
+
+          <a class="card" href="https://ustbmz.github.io/BlockchainStudy/" target="_blank" rel="noopener noreferrer">
+            <h3 data-i18n="block.title">Blockchain Study Center</h3>
+            <p class="repo-url">ustbmz.github.io/BlockchainStudy · github.com/ustbmz/BlockchainStudy</p>
+            <p class="desc" data-i18n="block.desc">Review center for a blockchain-engineer course: 66 notes and 63 flashcards across Go backend, Solidity, go-ethereum and DeFi (Uniswap V2/V3), plus a 33-step guided learning path with progress tracking, full-text search, code highlighting and KaTeX math. Zero-dependency static SPA.</p>
+            <div class="tags">
+              <span>Vanilla JS SPA</span><span>marked</span><span>highlight.js</span><span>KaTeX</span><span>GitHub Pages</span>
             </div>
           </a>
         </div>
@@ -397,13 +586,13 @@
       <div class="foot-inner">
         <p class="foot-brand">© <span id="year"></span> Miles</p>
         <p class="foot-lede">
-          Personal site hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
-          at <a href="https://ustbmz.github.io/" target="_blank" rel="noopener noreferrer">ustbmz.github.io</a>.
+          <span class="i18n-en">Personal site hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a> at <a href="https://ustbmz.github.io/" target="_blank" rel="noopener noreferrer">ustbmz.github.io</a>.</span>
+          <span class="i18n-zh" lang-hidden>个人网站托管在 <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>：<a href="https://ustbmz.github.io/" target="_blank" rel="noopener noreferrer">ustbmz.github.io</a>。</span>
         </p>
         <p class="foot-actions">
-          <a href="https://github.com/ustbmz" target="_blank" rel="noopener noreferrer">Profile</a>
+          <a href="https://github.com/ustbmz" target="_blank" rel="noopener noreferrer" data-i18n="foot.profile">Profile</a>
           <span class="sep" aria-hidden="true">·</span>
-          <a href="https://github.com/ustbmz/ustbmz.github.io" target="_blank" rel="noopener noreferrer">Site repository</a>
+          <a href="https://github.com/ustbmz/ustbmz.github.io" target="_blank" rel="noopener noreferrer" data-i18n="foot.repo">Site repository</a>
         </p>
       </div>
     </div>
@@ -411,6 +600,84 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // localStorage 安全封装：沙箱/隐私模式下禁用时不让脚本中断
+    const store = {
+      get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+      set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+    };
+
+    // ---------- 主题切换：分段控件（light / aurora / github） ----------
+    const themeBtns = document.querySelectorAll(".theme-switch button");
+
+    function applyTheme(t) {
+      document.documentElement.dataset.theme = t;
+      themeBtns.forEach(b => b.classList.toggle("active", b.dataset.t === t));
+      store.set("site_theme", t);
+    }
+    themeBtns.forEach(b => { b.onclick = () => applyTheme(b.dataset.t); });
+    applyTheme(document.documentElement.dataset.theme || "light");
+
+    // ---------- 中英双语 ----------
+    const I18N = {
+      en: {
+        "eyebrow": "Portfolio",
+        "lead": "Full-stack / front-end engineer with a blockchain focus. Open-source projects, plain HTML.",
+        "nav.about": "About",
+        "nav.projects": "Projects",
+        "about.title": "About",
+        "about.p1": "I\u2019m Miles. I build web products end to end and care about front-end engineering. I\u2019ve shipped community, blog-style, and Q&A / learning apps on my own, using both Vue and React, with Node backends (Koa / Express) and MongoDB. Lately I\u2019ve been deep in blockchain development \u2014 Solidity, go-ethereum, and DeFi protocols.",
+        "about.p2": "Feel free to reach out on GitHub or by email for collaboration or hiring inquiries.",
+        "projects.title": "Projects",
+        "lumen.desc": "Decoupled blog / community stack: public app, admin console, and Koa API as separate packages you can develop and deploy on their own. Posts, comments, user center, RBAC in the admin UI, and Markdown-oriented editing.",
+        "code.desc": "Full-stack React practice: user SPA (CRA + Redux Toolkit + React Router) and operations console (Umi Max + Ant Design Pro), both backed by one Express + MongoDB API.",
+        "erc.title": "ERC / EIP Reference",
+        "erc.desc": "Quick-reference handbook for Ethereum ERC / EIP standards: token, DeFi, NFT, wallet and AI + Web3 related proposals, each with key interfaces, events and when to use it. Live on GitHub Pages.",
+        "block.title": "Blockchain Study Center",
+        "block.desc": "Review center for a blockchain-engineer course: 66 notes and 63 flashcards across Go backend, Solidity, go-ethereum and DeFi (Uniswap V2/V3), plus a 33-step guided learning path with progress tracking, full-text search, code highlighting and KaTeX math. Zero-dependency static SPA.",
+        "foot.profile": "Profile",
+        "foot.repo": "Site repository",
+      },
+      zh: {
+        "eyebrow": "作品集",
+        "lead": "全栈 / 前端工程师，兼修区块链开发。开源项目，纯 HTML 实现。",
+        "nav.about": "关于",
+        "nav.projects": "项目",
+        "about.title": "关于我",
+        "about.p1": "我是 Miles，做端到端的 Web 产品，尤其关注前端工程。独立上线过社区、博客和问答 / 学习类应用，技术栈横跨 Vue 与 React，后端用 Node（Koa / Express）+ MongoDB。最近在深入区块链开发——Solidity、go-ethereum 与 DeFi 协议。",
+        "about.p2": "欢迎通过 GitHub 或邮件联系我，聊聊合作或工作机会。",
+        "projects.title": "项目",
+        "lumen.desc": "前后端分离的博客 / 社区技术栈：前台应用、管理后台、Koa API 三个包可独立开发部署，支持文章、评论、用户中心，管理端带 RBAC 权限，编辑器面向 Markdown。",
+        "code.desc": "React 全栈练手项目：用户端 SPA（CRA + Redux Toolkit + React Router）与运营管理台（Umi Max + Ant Design Pro），共用一套 Express + MongoDB API。",
+        "erc.title": "ERC / EIP 标准速查手册",
+        "erc.desc": "以太坊 ERC / EIP 标准在线速查手册：覆盖代币、DeFi、NFT、钱包与 AI + Web3 相关提案，每个标准整理了关键接口、事件与选型建议。已上线 GitHub Pages。",
+        "block.title": "区块链课程复习中心",
+        "block.desc": "区块链开发工程师系统课程的复习网站：66 篇笔记 + 63 张复习卡片，覆盖 Go 后端、Solidity、go-ethereum 与 DeFi（Uniswap V2/V3），并配有 33 步引导式学习路径、阅读进度、全文搜索、代码高亮与 KaTeX 公式渲染。零依赖纯静态 SPA。",
+        "foot.profile": "个人主页",
+        "foot.repo": "站点仓库",
+      },
+    };
+
+    const langBtns = document.querySelectorAll(".lang-toggle button");
+
+    function applyLang(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const v = I18N[lang][el.dataset.i18n];
+        if (typeof v === "string") el.textContent = v;
+      });
+      // 双语并存的整句节点（页脚等含链接的句子）：按语言显隐
+      document.querySelectorAll(".i18n-en").forEach(el => el.toggleAttribute("lang-hidden", lang !== "en"));
+      document.querySelectorAll(".i18n-zh").forEach(el => el.toggleAttribute("lang-hidden", lang !== "zh"));
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      langBtns.forEach(b => b.classList.toggle("active", b.dataset.l === lang));
+      store.set("site_lang", lang);
+    }
+
+    langBtns.forEach(b => { b.onclick = () => applyLang(b.dataset.l); });
+
+    // 首次访问跟随浏览器语言，之后记住用户选择
+    const saved = store.get("site_lang");
+    applyLang(saved || ((navigator.language || "en").toLowerCase().startsWith("zh") ? "zh" : "en"));
   </script>
 </body>
 </html>
