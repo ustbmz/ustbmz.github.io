@@ -816,9 +816,9 @@
 
     langBtns.forEach(b => { b.onclick = () => applyLang(b.dataset.l); });
 
-    // 首次访问跟随浏览器语言，之后记住用户选择
+    // 首次访问默认英文，之后记住用户选择
     const saved = store.get("site_lang");
-    applyLang(saved || ((navigator.language || "en").toLowerCase().startsWith("zh") ? "zh" : "en"));
+    applyLang(saved || "en");
   </script>
 </body>
 
